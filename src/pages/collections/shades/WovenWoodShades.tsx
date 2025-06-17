@@ -195,32 +195,41 @@ const StyleDescription = styled.p`
   margin-bottom: 1.5rem;
 `;
 
-const StyleLink = styled(motion(Link))`
+const RequestQuoteButton = styled(motion(Link))`
   font-family: 'Montserrat', sans-serif;
-  display: inline-block;
-  color: #000;
-  text-decoration: none;
-  font-size: 0.875rem;
+  background-color: transparent;
+  border: 2px solid white;
+  color: white;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
   text-transform: uppercase;
   letter-spacing: 1px;
-  position: relative;
+  text-decoration: none;
   
-  &::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 1px;
-    bottom: -2px;
-    left: 0;
-    background-color: #000;
-    transform: scaleX(0);
-    transform-origin: right;
-    transition: transform 0.3s ease;
+  &:hover {
+    background-color: white;
+    color: black;
   }
+`;
+
+const HeroButton = styled(motion(Link))`
+  font-family: 'Montserrat', sans-serif;
+  background-color: transparent;
+  border: 2px solid white;
+  color: white;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-decoration: none;
   
-  &:hover::after {
-    transform: scaleX(1);
-    transform-origin: left;
+  &:hover {
+    background-color: white;
+    color: black;
   }
 `;
 
@@ -270,45 +279,33 @@ const CTALink = styled(motion(Link))`
 const WovenWoodShades: React.FC = () => {
   const features = [
     {
-      title: 'Natural Materials',
-      description: 'Crafted from premium natural materials including bamboo, grasses, and reeds for an organic, earthy appeal.'
+      title: 'Natural Beauty',
+      description: 'Our woven wood shades showcase the natural beauty of sustainable materials, bringing warmth and texture to your windows.'
     },
     {
-      title: 'Textural Depth',
-      description: 'Add dimension and warmth to your space with the rich textures and natural variations of woven wood.'
+      title: 'Eco-Friendly',
+      description: 'Crafted from renewable resources like bamboo, grasses, and reeds, our woven wood shades are an environmentally conscious choice.'
     },
     {
-      title: 'Light Control',
-      description: 'Enjoy flexible light control with options for light filtering, room darkening, and privacy.'
-    },
-    {
-      title: 'Sustainable Choice',
-      description: 'Eco-friendly window treatments made from renewable resources and sustainable harvesting practices.'
-    },
-    {
-      title: 'Custom Sizing',
-      description: 'Precisely crafted to fit your windows perfectly, ensuring a seamless and professional installation.'
-    },
-    {
-      title: 'Timeless Design',
-      description: 'Classic woven wood shades that complement both traditional and contemporary interior styles.'
+      title: 'Versatile Design',
+      description: 'Available in a wide range of natural colors and textures, our woven wood shades complement any interior style.'
     }
   ];
 
   const styles = [
     {
-      name: 'Classic Bamboo',
-      description: 'Our Classic Bamboo shades feature premium bamboo slats woven with natural fibers, creating a timeless look that brings warmth and texture to any space.',
+      name: 'Classic Woven',
+      description: 'Our Classic Woven shades feature traditional patterns and natural materials, creating a timeless look that adds warmth to any room.',
       image: wovenWood1
     },
     {
-      name: 'Natural Grasses',
-      description: 'Experience the organic beauty of our Natural Grasses collection, featuring hand-woven grasses that create a soft, diffused light effect and natural texture.',
+      name: 'Modern Woven',
+      description: 'Experience contemporary style with our Modern Woven shades. These sleek window treatments combine natural materials with innovative designs.',
       image: wovenWood2
     },
     {
-      name: 'Premium Reeds',
-      description: 'Discover our Premium Reeds collection, showcasing the finest quality reeds woven into elegant patterns that add depth and character to your windows.',
+      name: 'Textured Woven',
+      description: 'Add depth and character to your windows with our Textured Woven shades. These unique window treatments showcase the natural beauty of mixed materials.',
       image: wovenWood3
     }
   ];
@@ -402,54 +399,52 @@ const WovenWoodShades: React.FC = () => {
     >
       <Header variants={headerVariants}>
         <Container>
-          <BackLink 
-            to="/collections/shades"
-            whileHover={{ x: -5 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <ArrowLeft className="h-5 w-5 mr-2" />
+          <BackLink to="/collections/shades" variants={titleVariants}>
+            <ArrowLeft size={20} style={{ marginRight: '0.5rem' }} />
             Back to Shades
           </BackLink>
           <Title variants={titleVariants}>Woven Wood Shades</Title>
           <Description variants={descriptionVariants}>
-            Experience the natural beauty and timeless elegance of our premium woven wood shades. Handcrafted from sustainable materials, these window treatments bring warmth, texture, and organic charm to your living spaces.
+            Add natural warmth and texture to your windows with our Woven Wood Shades. 
+            Experience the perfect blend of organic beauty and modern functionality.
           </Description>
+          <HeroButton
+            to="/quote-request?type=shades&model=Woven Wood Shades"
+            variants={descriptionVariants}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Request a Quote
+          </HeroButton>
         </Container>
       </Header>
 
       <Container>
         <FeaturesGrid variants={gridVariants}>
           {features.map((feature) => (
-            <FeatureCard
-              key={feature.title}
-              variants={cardVariants}
-              whileHover={{ y: -10 }}
-            >
+            <FeatureCard key={feature.title} variants={cardVariants}>
               <FeatureTitle>{feature.title}</FeatureTitle>
               <FeatureDescription>{feature.description}</FeatureDescription>
             </FeatureCard>
           ))}
         </FeaturesGrid>
 
-        <StylesSection>
-          <StylesTitle>Natural Collection</StylesTitle>
-          <StylesGrid variants={stylesGridVariants}>
+        <StylesSection variants={stylesGridVariants}>
+          <StylesTitle>Available Styles</StylesTitle>
+          <StylesGrid>
             {styles.map((style) => (
-              <StyleCard
-                key={style.name}
-                variants={styleCardVariants}
-                whileHover={{ y: -10 }}
-              >
+              <StyleCard key={style.name} variants={cardVariants}>
                 <StyleImage src={style.image} alt={style.name} />
                 <StyleContent>
                   <StyleName>{style.name}</StyleName>
                   <StyleDescription>{style.description}</StyleDescription>
-                  <StyleLink 
-                    to="/contact"
-                    whileHover={{ x: 5 }}
+                  <RequestQuoteButton
+                    to={`/quote-request?type=shades&model=${encodeURIComponent(style.name)}`}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
                   >
                     Request a Quote
-                  </StyleLink>
+                  </RequestQuoteButton>
                 </StyleContent>
               </StyleCard>
             ))}

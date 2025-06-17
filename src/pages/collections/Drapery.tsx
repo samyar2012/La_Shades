@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import rollerShadeImage from '../../assets/photo_2025-06-01_20-53-17.jpg';
-import romanShadeImage from '../../assets/photo_2025-06-01_20-53-12.jpg';
-import cellularShadeImage from '../../assets/kimberley-alpuerto-gYCj5LrI9wI-unsplash.jpg';
-import motorizedShadeImage from '../../assets/photo_2025-06-01_20-53-26.jpg';
+import sheerDraperyImage from '../../assets/photo_2025-06-01_21-26-01.jpg';
+import blackoutDraperyImage from '../../assets/photo_2025-06-01_21-26-02.jpg';
+import decorativeDraperyImage from '../../assets/photo_2025-06-01_21-26-02 (2).jpg';
+import motorizedDraperyImage from '../../assets/photo_2025-06-01_20-53-26.jpg';
+import fabricDraperyImage from '../../assets/photo_2025-06-01_21-25-59.jpg';
 
 const PageContainer = styled(motion.div)`
   min-height: 100vh;
@@ -20,7 +21,7 @@ const Header = styled(motion.div)`
   align-items: center;
   justify-content: center;
   background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-              url(${rollerShadeImage}) center/cover no-repeat;
+              url(${sheerDraperyImage}) center/cover no-repeat;
   padding: 2rem;
   text-align: center;
   color: white;
@@ -106,23 +107,25 @@ const SectionDescription = styled.p`
   font-weight: 300;
 `;
 
+const ProductsContainer = styled.div`
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+`;
+
 const ProductsGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
-  
-  @media (max-width: 1200px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-  }
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
 `;
 
 const ProductCard = styled.div`
   position: relative;
   height: 400px;
+  width: 280px;
+  flex-shrink: 0;
   overflow: hidden;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -226,6 +229,55 @@ const ProductLink = styled(Link)`
   }
 `;
 
+const NavigationButton = styled.button`
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: white;
+  border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: #f5f5f5;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  &.prev {
+    left: -20px;
+  }
+
+  &.next {
+    right: -20px;
+  }
+
+  &::before {
+    content: '';
+    width: 10px;
+    height: 10px;
+    border-top: 2px solid #333;
+    border-right: 2px solid #333;
+  }
+
+  &.prev::before {
+    transform: rotate(-135deg);
+    margin-left: 4px;
+  }
+
+  &.next::before {
+    transform: rotate(45deg);
+    margin-right: 4px;
+  }
+`;
+
 const CTASection = styled.div`
   text-align: center;
   margin: 8rem auto 4rem;
@@ -273,31 +325,59 @@ const CTALink = styled(Link)`
   }
 `;
 
-const Shades: React.FC = () => {
-  const collections = [
+const Drapery: React.FC = () => {
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const scroll = (direction: 'left' | 'right') => {
+    if (scrollRef.current) {
+      const scrollAmount = 280 + 24; // card width + gap
+      const currentScroll = scrollRef.current.scrollLeft;
+      const newScroll = direction === 'left' 
+        ? currentScroll - scrollAmount 
+        : currentScroll + scrollAmount;
+      
+      scrollRef.current.scrollTo({
+        left: newScroll,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  const products = [
     {
-      name: 'Roller Shades',
-      description: 'Clean and modern roller shades that offer smooth operation and excellent light control.',
-      image: rollerShadeImage,
-      path: '/collections/shades/roller'
+      id: 1,
+      title: 'Sheer Drapery',
+      description: 'Light and airy window treatments that provide privacy while maintaining natural light.',
+      image: sheerDraperyImage,
+      link: '/collections/drapery/sheer'
     },
     {
-      name: 'Roman Shades',
-      description: 'Elegant roman shades that combine classic style with modern functionality.',
-      image: romanShadeImage,
-      path: '/collections/shades/roman'
+      id: 2,
+      title: 'Blackout Drapery',
+      description: 'Complete light control and privacy with our premium blackout drapery collection.',
+      image: blackoutDraperyImage,
+      link: '/collections/drapery/blackout'
     },
     {
-      name: 'Cellular Shades',
-      description: 'Energy-efficient cellular shades that provide excellent insulation and light control.',
-      image: cellularShadeImage,
-      path: '/collections/shades/cellular'
+      id: 3,
+      title: 'Decorative Drapery',
+      description: 'Elegant and stylish drapery designs that add sophistication to any room.',
+      image: decorativeDraperyImage,
+      link: '/collections/drapery/decorative'
     },
     {
-      name: 'Motorized Shades',
-      description: 'Smart motorized shades that offer convenience and modern living solutions.',
-      image: motorizedShadeImage,
-      path: '/collections/shades/motorized'
+      id: 4,
+      title: 'Motorized Drapery',
+      description: 'Smart and convenient drapery solutions with automated control systems.',
+      image: motorizedDraperyImage,
+      link: '/collections/drapery/motorized'
+    },
+    {
+      id: 5,
+      title: 'Fabric Drapery',
+      description: 'Luxurious fabric drapery options that combine style and functionality for your windows.',
+      image: fabricDraperyImage,
+      link: '/collections/drapery/fabric'
     }
   ];
 
@@ -334,25 +414,6 @@ const Shades: React.FC = () => {
     }
   };
 
-  const gridVariants = {
-    initial: { opacity: 0 },
-    animate: { 
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2
-      }
-    }
-  };
-
-  const cardVariants = {
-    initial: { opacity: 0, y: 20 },
-    animate: { 
-      opacity: 1, 
-      y: 0,
-      transition: { duration: 0.6 }
-    }
-  };
-
   return (
     <PageContainer
       initial="initial"
@@ -364,42 +425,36 @@ const Shades: React.FC = () => {
         <Container>
           <Title variants={titleVariants}>Our Collection</Title>
           <Description variants={descriptionVariants}>
-            Discover our premium collection of window shades, designed to enhance your space with style, functionality, and comfort.
+            Discover our premium collection of drapery treatments, designed to enhance your space with elegance and sophistication.
           </Description>
         </Container>
       </Header>
 
       <ProductsSection>
         <Container>
-          <SectionHeader>
-            <SectionTitle>Our Collection</SectionTitle>
-            <SectionDivider />
-            <SectionDescription>
-              Explore our curated selection of premium window shades, each designed to bring elegance and functionality to your space.
-            </SectionDescription>
-          </SectionHeader>
-
-          <ProductsGrid>
-            {collections.map((collection) => (
-              <ProductCard key={collection.name}>
-                <ProductImage src={collection.image} alt={collection.name} />
-                <ProductOverlay>
-                  <ProductTitle>{collection.name}</ProductTitle>
-                  <ProductDescription>{collection.description}</ProductDescription>
-                  <ProductLink to={collection.path}>Learn More</ProductLink>
-                </ProductOverlay>
-              </ProductCard>
-            ))}
-          </ProductsGrid>
+          <ProductsContainer>
+            <NavigationButton className="prev" onClick={() => scroll('left')} />
+            <ProductsGrid ref={scrollRef}>
+              {products.map((product) => (
+                <ProductCard key={product.id}>
+                  <ProductImage src={product.image} alt={product.title} />
+                  <ProductOverlay>
+                    <ProductTitle>{product.title}</ProductTitle>
+                    <ProductDescription>{product.description}</ProductDescription>
+                    <ProductLink to={product.link}>Learn More</ProductLink>
+                  </ProductOverlay>
+                </ProductCard>
+              ))}
+            </ProductsGrid>
+            <NavigationButton className="next" onClick={() => scroll('right')} />
+          </ProductsContainer>
 
           <CTASection>
             <CTATitle>Ready to Transform Your Windows?</CTATitle>
             <CTADescription>
               Schedule a free consultation with our design experts and discover the perfect window treatments for your space.
             </CTADescription>
-            <CTALink to="/contact">
-              Schedule Free Consultation
-            </CTALink>
+            <CTALink to="/contact">Schedule Free Consultation</CTALink>
           </CTASection>
         </Container>
       </ProductsSection>
@@ -407,4 +462,4 @@ const Shades: React.FC = () => {
   );
 };
 
-export default Shades; 
+export default Drapery; 

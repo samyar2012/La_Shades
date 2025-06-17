@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import aboutImage1 from '../assets/photo_2025-06-01_21-25-55.jpg';
 import aboutImage2 from '../assets/photo_2025-06-01_21-25-57.jpg';
 import aboutImage3 from '../assets/photo_2025-06-01_21-26-00.jpg';
-import heroImage from '../assets/photo_2025-06-01_20-53-26.jpg';
+import heroImage from '../assets/anais-murith-u2kV8mqvdtc-unsplash.jpg';
 
 const PageContainer = styled.div`
   min-height: 100vh;
@@ -465,12 +465,7 @@ const About = () => {
     });
   }, []);
 
-  const stats = [
-    { number: '10+', label: 'Years of Experience', icon: <Award className="h-8 w-8" /> },
-    { number: '5000+', label: 'Happy Customers', icon: <Heart className="h-8 w-8" /> },
-    { number: '50+', label: 'Expert Team Members', icon: <Users className="h-8 w-8" /> },
-    { number: '4.9', label: 'Customer Rating', icon: <Star className="h-8 w-8" /> }
-  ];
+
 
   const values = [
     {
@@ -540,14 +535,13 @@ const About = () => {
               Crafting Elegance in Every Window
             </HeroTitle>
             <HeroDescription data-aos="fade-up" data-aos-delay="600">
-              Since 2015, Luna Drapes has been transforming spaces with premium window treatments, 
-              bringing elegance and functionality to homes across the nation.
+            Luna Drapes is dedicated to enhancing your living spaces with our premium window treatments, combining timeless elegance and practical functionality to create the perfect ambiance for homes nationwide.
             </HeroDescription>
             <ButtonGroup data-aos="fade-up" data-aos-delay="800">
               <PrimaryButton href="/contact">
                 Schedule Consultation
               </PrimaryButton>
-              <SecondaryButton href="/collections/shades">
+              <SecondaryButton href="/collections">
                 View Collections
               </SecondaryButton>
             </ButtonGroup>
@@ -555,21 +549,7 @@ const About = () => {
         </HeroContent>
       </HeroSection>
 
-      <StatsSection data-aos="fade-up" data-aos-delay="400">
-        <StatsGrid>
-          {stats.map((stat, index) => (
-            <StatCard
-              key={stat.label}
-              data-aos="fade-up"
-              data-aos-delay={200 + index * 100}
-            >
-              <StatIcon>{stat.icon}</StatIcon>
-              <StatNumber>{stat.number}</StatNumber>
-              <StatLabel>{stat.label}</StatLabel>
-            </StatCard>
-          ))}
-        </StatsGrid>
-      </StatsSection>
+
 
       <Section>
         <SectionTitle data-aos="fade-up">Our Values</SectionTitle>

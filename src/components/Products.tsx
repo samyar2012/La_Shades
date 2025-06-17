@@ -173,24 +173,24 @@ const Products: React.FC = () => {
   const products = [
     {
       id: 1,
-      title: 'Roller Shades',
-      description: 'Sleek and modern window coverings that combine style with functionality.',
+      title: 'Shades',
+      description: 'Versatile window coverings that offer both style and functionality for any space.',
       image: rollerShade,
-      link: '/collections/shades/roller'
+      link: '/collections/shades'
     },
     {
       id: 2,
-      title: 'Roman Shades',
-      description: 'Elegant and timeless window treatments that add sophistication to any room.',
+      title: 'Blinds',
+      description: 'Classic window treatments that provide precise light control and timeless appeal.',
       image: romanShade,
-      link: '/collections/shades/roman'
+      link: '/collections/blinds'
     },
     {
       id: 3,
-      title: 'Cellular Shades',
-      description: 'Energy-efficient window coverings that provide excellent insulation and light control.',
+      title: 'Drapery',
+      description: 'Luxurious fabric window treatments that add elegance and sophistication to your home.',
       image: cellularShade,
-      link: '/collections/shades/cellular'
+      link: '/collections/drapery'
     },
     {
       id: 4,

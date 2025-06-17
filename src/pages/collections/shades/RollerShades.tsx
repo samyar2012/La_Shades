@@ -200,58 +200,25 @@ const StyleDescription = styled.p`
   margin-bottom: 1.5rem;
 `;
 
-const StyleLink = styled(motion(Link))`
+const RequestQuoteButton = styled(motion(Link))`
   font-family: 'Montserrat', sans-serif;
-  display: inline-block;
-  color: #000;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 0.375rem;
   text-decoration: none;
   font-size: 0.875rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  position: relative;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
   
-  &::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 1px;
-    bottom: -2px;
-    left: 0;
-    background-color: #000;
-    transform: scaleX(0);
-    transform-origin: right;
-    transition: transform 0.3s ease;
+  &:hover {
+    background: rgba(0, 0, 0, 0.9);
+    transform: translateY(-2px);
   }
-  
-  &:hover::after {
-    transform: scaleX(1);
-    transform-origin: left;
-  }
-`;
-
-const CTASection = styled(motion.div)`
-  text-align: center;
-  margin: 8rem auto;
-  max-width: 800px;
-`;
-
-const CTATitle = styled.h2`
-  font-family: 'Playfair Display', serif;
-  font-size: 2.5rem;
-  color: #000;
-  margin-bottom: 1rem;
-  font-weight: normal;
-`;
-
-const CTADescription = styled.p`
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1.125rem;
-  color: #333;
-  line-height: 1.6;
-  margin-bottom: 2rem;
-  max-width: 32rem;
-  margin-left: auto;
-  margin-right: auto;
 `;
 
 const CTALink = styled(motion(Link))`
@@ -265,10 +232,30 @@ const CTALink = styled(motion(Link))`
   transition: all 0.3s ease;
   text-transform: uppercase;
   letter-spacing: 1px;
+  text-decoration: none;
   
   &:hover {
     background-color: #000;
     color: white;
+  }
+`;
+
+const HeroButton = styled(motion(Link))`
+  font-family: 'Montserrat', sans-serif;
+  background-color: transparent;
+  border: 2px solid white;
+  color: white;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-decoration: none;
+  
+  &:hover {
+    background-color: white;
+    color: black;
   }
 `;
 
@@ -303,17 +290,17 @@ const RollerShades: React.FC = () => {
   const styles = [
     {
       name: 'Classic Roller',
-      description: 'Our signature roller shade combines timeless elegance with modern functionality. Featuring smooth operation and clean lines, this versatile option complements any interior design while providing excellent light control.',
+      description: 'Our Classic Roller shades offer timeless elegance with smooth operation and versatile design. Perfect for any room in your home.',
       image: classicRoller
     },
     {
       name: 'Solar Roller',
-      description: 'Engineered for optimal energy efficiency, our solar roller shades help regulate room temperature while reducing glare. Perfect for rooms with large windows, these shades offer UV protection and temperature control.',
+      description: 'Experience superior sun protection with our Solar Roller shades. These innovative window treatments filter harmful UV rays while maintaining your view.',
       image: solarRoller
     },
     {
       name: 'Blackout Roller',
-      description: 'Experience complete darkness with our premium blackout roller shades. Ideal for bedrooms, media rooms, and spaces requiring maximum light control. Features advanced light-blocking technology for optimal privacy and comfort.',
+      description: 'Create the perfect environment for rest and relaxation with our Blackout Roller shades. These premium window treatments provide complete light control and privacy.',
       image: blackoutRoller
     }
   ];
@@ -417,8 +404,17 @@ const RollerShades: React.FC = () => {
           </BackLink>
           <Title variants={titleVariants}>Roller Shades</Title>
           <Description variants={descriptionVariants}>
-            Discover the perfect blend of contemporary design and practical functionality with our premium roller shades. Engineered for modern living, these shades offer precise light control, effortless operation, and timeless elegance for any space.
+            Discover the perfect blend of style and functionality with our roller shades. 
+            From classic designs to innovative solar and blackout options, find the ideal solution for your windows.
           </Description>
+          <HeroButton
+            to="/quote-request?type=shades&model=Roller Shades"
+            variants={descriptionVariants}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Request a Quote
+          </HeroButton>
         </Container>
       </Header>
 
@@ -437,7 +433,7 @@ const RollerShades: React.FC = () => {
         </FeaturesGrid>
 
         <StylesSection variants={stylesVariants}>
-          <StylesTitle>Our Roller Shade Styles</StylesTitle>
+          <StylesTitle>Available Styles</StylesTitle>
           <StylesGrid>
             {styles.map((style) => (
               <StyleCard
@@ -449,31 +445,18 @@ const RollerShades: React.FC = () => {
                 <StyleContent>
                   <StyleName>{style.name}</StyleName>
                   <StyleDescription>{style.description}</StyleDescription>
-                  <StyleLink 
-                    to="/contact"
-                    whileHover={{ x: 5 }}
+                  <RequestQuoteButton
+                    to={`/quote-request?type=shades&model=${encodeURIComponent(style.name)}`}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
                   >
                     Request a Quote
-                  </StyleLink>
+                  </RequestQuoteButton>
                 </StyleContent>
               </StyleCard>
             ))}
           </StylesGrid>
         </StylesSection>
-
-        <CTASection variants={ctaVariants}>
-          <CTATitle>Transform Your Windows</CTATitle>
-          <CTADescription>
-            Schedule a consultation with our design experts today and discover how roller shades can enhance your space.
-          </CTADescription>
-          <CTALink 
-            to="/contact"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Schedule Consultation
-          </CTALink>
-        </CTASection>
       </Container>
     </PageContainer>
   );

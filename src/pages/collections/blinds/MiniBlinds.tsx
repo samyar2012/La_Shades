@@ -272,6 +272,35 @@ const CTALink = styled(motion(Link))`
   }
 `;
 
+const RequestQuoteButton = styled(motion(Link))`
+  font-family: 'Montserrat', sans-serif;
+  display: inline-block;
+  color: #000;
+  text-decoration: none;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    bottom: -2px;
+    left: 0;
+    background-color: #000;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+  }
+  
+  &:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+`;
+
 const MiniBlinds: React.FC = () => {
   const features = [
     {
@@ -449,12 +478,13 @@ const MiniBlinds: React.FC = () => {
                 <StyleContent>
                   <StyleName>{style.name}</StyleName>
                   <StyleDescription>{style.description}</StyleDescription>
-                  <StyleLink 
-                    to="/contact"
-                    whileHover={{ x: 5 }}
+                  <RequestQuoteButton
+                    to={`/quote-request?type=blinds&model=${style.name}`}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
                   >
                     Request a Quote
-                  </StyleLink>
+                  </RequestQuoteButton>
                 </StyleContent>
               </StyleCard>
             ))}

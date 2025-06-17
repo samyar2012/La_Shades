@@ -202,32 +202,24 @@ const StyleDescription = styled.p`
   margin-bottom: 1.5rem;
 `;
 
-const StyleLink = styled(motion(Link))`
+const RequestQuoteButton = styled(motion(Link))`
   font-family: 'Montserrat', sans-serif;
-  display: inline-block;
-  color: #000;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 0.375rem;
   text-decoration: none;
   font-size: 0.875rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  position: relative;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
   
-  &::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 1px;
-    bottom: -2px;
-    left: 0;
-    background-color: #000;
-    transform: scaleX(0);
-    transform-origin: right;
-    transition: transform 0.3s ease;
-  }
-  
-  &:hover::after {
-    transform: scaleX(1);
-    transform-origin: left;
+  &:hover {
+    background: rgba(0, 0, 0, 0.9);
+    transform: translateY(-2px);
   }
 `;
 
@@ -267,6 +259,7 @@ const CTALink = styled(motion(Link))`
   transition: all 0.3s ease;
   text-transform: uppercase;
   letter-spacing: 1px;
+  text-decoration: none;
   
   &:hover {
     background-color: #000;
@@ -304,19 +297,19 @@ const RomanShades: React.FC = () => {
 
   const styles = [
     {
-      name: 'Flat Roman Shades',
-      description: 'Clean, modern lines with a flat surface when lowered. Perfect for contemporary spaces and minimalist design.',
+      name: 'Classic Roman',
+      description: 'Our Classic Roman shades offer timeless elegance with soft, cascading folds. Perfect for creating a sophisticated look in any room.',
+      image: romanShadesImage
+    },
+    {
+      name: 'Flat Roman',
+      description: 'Experience modern simplicity with our Flat Roman shades. These sleek window treatments provide a clean, contemporary look while maintaining excellent light control.',
       image: flatRomanImage
     },
     {
-      name: 'Hobbled Roman Shades',
-      description: 'Elegant folds that create a soft, cascading effect. Adds texture and depth to any room while maintaining a classic look.',
+      name: 'Hobbled Roman',
+      description: 'Add depth and dimension to your windows with our Hobbled Roman shades. These luxurious window treatments feature elegant folds that create a rich, layered appearance.',
       image: hobbledRomanImage
-    },
-    {
-      name: 'Classic Roman Shades',
-      description: 'Timeless design with gentle folds that create a sophisticated appearance. Versatile enough for both traditional and modern interiors.',
-      image: romanShadesImage
     }
   ];
 
@@ -419,8 +412,17 @@ const RomanShades: React.FC = () => {
           </BackLink>
           <Title variants={titleVariants}>Roman Shades</Title>
           <Description variants={descriptionVariants}>
-            Discover the timeless elegance of our Roman shades collection. Each style combines classic design with modern functionality, creating the perfect balance of form and function for your windows.
+            Elevate your windows with the timeless elegance of Roman shades. 
+            From classic folds to modern flat designs, discover the perfect blend of style and functionality.
           </Description>
+          <RequestQuoteButton
+            to="/quote-request?type=shades&model=Roman Shades"
+            variants={descriptionVariants}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Request a Quote
+          </RequestQuoteButton>
         </Container>
       </Header>
 
@@ -439,7 +441,7 @@ const RomanShades: React.FC = () => {
         </FeaturesGrid>
 
         <StylesSection>
-          <StylesTitle>Our Roman Shade Styles</StylesTitle>
+          <StylesTitle>Available Styles</StylesTitle>
           <StylesGrid>
             {styles.map((style) => (
               <StyleCard
@@ -451,6 +453,13 @@ const RomanShades: React.FC = () => {
                 <StyleContent>
                   <StyleName>{style.name}</StyleName>
                   <StyleDescription>{style.description}</StyleDescription>
+                  <RequestQuoteButton
+                    to={`/quote-request?type=shades&model=${encodeURIComponent(style.name)}`}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    Request a Quote
+                  </RequestQuoteButton>
                 </StyleContent>
               </StyleCard>
             ))}

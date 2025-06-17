@@ -183,10 +183,10 @@ const Accessories: React.FC = () => {
       path: '/collections/accessories/finials'
     },
     {
-      name: 'Brackets',
-      description: 'Sturdy brackets that securely mount your curtain rods. Available in matching finishes and styles.',
+      name: 'Valances',
+      description: 'Add the perfect finishing touch to your windows with our collection of premium valances. Our valances combine functionality with elegant design.',
       image: bracket,
-      path: '/collections/accessories/brackets'
+      path: '/collections/accessories/valances'
     },
     {
       name: 'Tiebacks',

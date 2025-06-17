@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const HeroContainer = styled(motion.div)`
   min-height: 100vh;
@@ -45,7 +46,7 @@ const Subtitle = styled(motion.p)`
   }
 `;
 
-const CTAButton = styled(motion.button)`
+const CTAButton = styled(motion(Link))`
   font-family: 'Montserrat', sans-serif;
   background-color: transparent;
   border: 2px solid white;
@@ -56,6 +57,8 @@ const CTAButton = styled(motion.button)`
   transition: all 0.3s ease;
   text-transform: uppercase;
   letter-spacing: 1px;
+  text-decoration: none;
+  display: inline-block;
   
   &:hover {
     background-color: white;
@@ -132,6 +135,7 @@ const Hero = () => {
           variants={buttonVariants}
           whileHover="hover"
           whileTap="tap"
+          to="/collections"
         >
           Explore Collection
         </CTAButton>

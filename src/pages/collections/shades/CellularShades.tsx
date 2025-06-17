@@ -195,32 +195,24 @@ const StyleDescription = styled.p`
   margin-bottom: 1.5rem;
 `;
 
-const StyleLink = styled(motion(Link))`
+const RequestQuoteButton = styled(motion(Link))`
   font-family: 'Montserrat', sans-serif;
-  display: inline-block;
-  color: #000;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 0.375rem;
   text-decoration: none;
   font-size: 0.875rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  position: relative;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
   
-  &::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 1px;
-    bottom: -2px;
-    left: 0;
-    background-color: #000;
-    transform: scaleX(0);
-    transform-origin: right;
-    transition: transform 0.3s ease;
-  }
-  
-  &:hover::after {
-    transform: scaleX(1);
-    transform-origin: left;
+  &:hover {
+    background: rgba(0, 0, 0, 0.9);
+    transform: translateY(-2px);
   }
 `;
 
@@ -260,6 +252,7 @@ const CTALink = styled(motion(Link))`
   transition: all 0.3s ease;
   text-transform: uppercase;
   letter-spacing: 1px;
+  text-decoration: none;
   
   &:hover {
     background-color: #000;
@@ -298,17 +291,17 @@ const CellularShades: React.FC = () => {
   const styles = [
     {
       name: 'Single Cell',
-      description: 'Our Single Cell cellular shades offer the perfect balance of style and energy efficiency. With a single layer of honeycomb cells, these shades provide excellent insulation while maintaining a sleek, modern appearance.',
+      description: 'Our Single Cell shades provide excellent insulation and light control with a sleek, modern design. Perfect for standard windows and smaller spaces.',
       image: singleCell
     },
     {
       name: 'Double Cell',
-      description: 'Experience superior energy efficiency with our Double Cell cellular shades. Featuring two layers of honeycomb cells, these premium shades provide maximum insulation and light control, perfect for extreme temperature conditions.',
+      description: 'Experience superior energy efficiency with our Double Cell shades. These premium window treatments offer enhanced insulation and sound absorption.',
       image: doubleCell
     },
     {
       name: 'Triple Cell',
-      description: 'Our Triple Cell cellular shades represent the pinnacle of energy efficiency. With three layers of honeycomb cells, these ultra-premium shades offer unmatched insulation and light control, ideal for large windows and extreme climates.',
+      description: 'Maximize energy savings with our Triple Cell shades. These top-tier window treatments provide the highest level of insulation and light control.',
       image: tripleCell
     }
   ];
@@ -402,54 +395,52 @@ const CellularShades: React.FC = () => {
     >
       <Header variants={headerVariants}>
         <Container>
-          <BackLink 
-            to="/collections/shades"
-            whileHover={{ x: -5 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <ArrowLeft className="h-5 w-5 mr-2" />
+          <BackLink to="/collections/shades" variants={titleVariants}>
+            <ArrowLeft size={20} style={{ marginRight: '0.5rem' }} />
             Back to Shades
           </BackLink>
           <Title variants={titleVariants}>Cellular Shades</Title>
           <Description variants={descriptionVariants}>
-            Experience the perfect fusion of energy efficiency and sophisticated design with our premium cellular shades. Engineered with innovative honeycomb technology, these window treatments offer exceptional insulation while enhancing your home's aesthetic appeal.
+            Discover the perfect blend of style and energy efficiency with our Cellular Shades. 
+            From single to triple cell designs, find the ideal solution for your windows.
           </Description>
+          <RequestQuoteButton
+            to="/quote-request?type=shades&model=Cellular Shades"
+            variants={descriptionVariants}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Request a Quote
+          </RequestQuoteButton>
         </Container>
       </Header>
 
       <Container>
         <FeaturesGrid variants={gridVariants}>
           {features.map((feature) => (
-            <FeatureCard
-              key={feature.title}
-              variants={cardVariants}
-              whileHover={{ y: -10 }}
-            >
+            <FeatureCard key={feature.title} variants={cardVariants}>
               <FeatureTitle>{feature.title}</FeatureTitle>
               <FeatureDescription>{feature.description}</FeatureDescription>
             </FeatureCard>
           ))}
         </FeaturesGrid>
 
-        <StylesSection>
-          <StylesTitle>Premium Collection</StylesTitle>
-          <StylesGrid variants={stylesGridVariants}>
+        <StylesSection variants={stylesGridVariants}>
+          <StylesTitle>Available Styles</StylesTitle>
+          <StylesGrid>
             {styles.map((style) => (
-              <StyleCard
-                key={style.name}
-                variants={styleCardVariants}
-                whileHover={{ y: -10 }}
-              >
+              <StyleCard key={style.name} variants={cardVariants}>
                 <StyleImage src={style.image} alt={style.name} />
                 <StyleContent>
                   <StyleName>{style.name}</StyleName>
                   <StyleDescription>{style.description}</StyleDescription>
-                  <StyleLink 
-                    to="/contact"
-                    whileHover={{ x: 5 }}
+                  <RequestQuoteButton
+                    to={`/quote-request?type=shades&model=${encodeURIComponent(style.name)}`}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
                   >
                     Request a Quote
-                  </StyleLink>
+                  </RequestQuoteButton>
                 </StyleContent>
               </StyleCard>
             ))}

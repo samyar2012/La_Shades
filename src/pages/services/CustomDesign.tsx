@@ -312,12 +312,12 @@ const CustomDesign: React.FC = () => {
       <Header variants={headerVariants}>
         <Container>
           <BackLink 
-            to="/services"
+            to="/"
             whileHover={{ x: -5 }}
             whileTap={{ scale: 0.95 }}
           >
             <ArrowLeft className="h-5 w-5 mr-2" />
-            Back to Services
+            Back to home
           </BackLink>
           <Title variants={titleVariants}>Custom Design Service</Title>
           <Description variants={descriptionVariants}>

@@ -37,6 +37,9 @@ interface Project {
   category: string;
   image: string;
   description: string;
+  price: string;
+  features: string[];
+  additionalImages: string[];
 }
 
 const PageContainer = styled(motion.div)`
@@ -126,7 +129,7 @@ const SearchContainer = styled(motion.div)`
   margin-bottom: 1.5rem;
 `;
 
-const SearchInput = styled(motion.input)`
+const SearchInput = styled(motion.input).attrs({ as: 'input' })`
   width: 100%;
   padding: 0.75rem 1rem 0.75rem 2.5rem;
   border: 1px solid #e5e7eb;
@@ -178,7 +181,7 @@ const FilterLabel = styled(motion.label)`
   font-weight: 500;
 `;
 
-const FilterSelect = styled(motion.select)`
+const FilterSelect = styled(motion.select).attrs({ as: 'select' })`
   width: 100%;
   padding: 0.5rem;
   border: 1px solid #e5e7eb;
@@ -311,171 +314,363 @@ const Projects: React.FC = () => {
   const projects: Project[] = [
     {
       id: 1,
-      title: 'Modern Living Room',
+      title: 'Modern Roller Shade',
       category: 'residential',
       image: rollerShade,
-      description: 'Elegant roller shades in a contemporary living space'
+      description: 'Elegant roller shades perfect for modern living spaces',
+      price: '$299.99',
+      features: [
+        'Premium fabric construction',
+        'Smooth operation system',
+        'Custom sizing available',
+        'Multiple color options'
+      ],
+      additionalImages: [romanShade, cellularShade, motorizedShade]
     },
     {
       id: 2,
-      title: 'Luxury Hotel Suite',
-      category: 'commercial',
+      title: 'Classic Roman Shade',
+      category: 'residential',
       image: romanShade,
-      description: 'Custom Roman shades for a premium hotel experience'
+      description: 'Timeless Roman shades that add sophistication to any room',
+      price: '$349.99',
+      features: [
+        'Luxurious fabric options',
+        'Custom pleat sizes',
+        'Cordless operation available',
+        'Perfect light control'
+      ],
+      additionalImages: [rollerShade, cellularShade, motorizedShade]
     },
     {
       id: 3,
-      title: 'Energy-Efficient Office',
-      category: 'commercial',
+      title: 'Energy-Efficient Cellular Shade',
+      category: 'residential',
       image: cellularShade,
-      description: 'Cellular shades providing optimal light control and insulation'
+      description: 'Advanced cellular shades for optimal insulation and light control',
+      price: '$399.99',
+      features: [
+        'Energy-saving design',
+        'Multiple cell sizes',
+        'Top-down/bottom-up operation',
+        'Premium materials'
+      ],
+      additionalImages: [rollerShade, romanShade, motorizedShade]
     },
     {
       id: 4,
-      title: 'Smart Home Integration',
-      category: 'residential',
+      title: 'Smart Motorized Shade',
+      category: 'commercial',
       image: motorizedShade,
-      description: 'Motorized shades with smart home automation'
+      description: 'State-of-the-art motorized shades for modern spaces',
+      price: '$599.99',
+      features: [
+        'Smart home integration',
+        'Remote control operation',
+        'Battery or hardwired options',
+        'Scheduled automation'
+      ],
+      additionalImages: [rollerShade, romanShade, cellularShade]
     },
     {
       id: 5,
       title: 'Smart Home Control',
       category: 'residential',
       image: motorizedShade2,
-      description: 'Advanced motorized shades with remote control'
+      description: 'Advanced motorized shades with remote control',
+      price: '$549.99',
+      features: [
+        'Smart home integration',
+        'Remote control operation',
+        'Battery or hardwired options',
+        'Scheduled automation'
+      ],
+      additionalImages: [rollerShade, romanShade, cellularShade]
     },
     {
       id: 6,
       title: 'Elegant Dining Room',
       category: 'residential',
       image: elegantDrapes,
-      description: 'Floor-to-ceiling drapes creating a sophisticated atmosphere'
+      description: 'Floor-to-ceiling drapes creating a sophisticated atmosphere',
+      price: '$449.99',
+      features: [
+        'Premium fabric selection',
+        'Custom sizing',
+        'Multiple pleat styles',
+        'Lining options'
+      ],
+      additionalImages: [sheerCurtains, blackoutCurtains, wovenWood]
     },
     {
       id: 7,
       title: 'Restaurant Interior',
       category: 'commercial',
       image: sheerCurtains,
-      description: 'Sheer curtains adding softness to a modern restaurant space'
+      description: 'Sheer curtains adding softness to a modern restaurant space',
+      price: '$299.99',
+      features: [
+        'Light filtering',
+        'Soft drape',
+        'Multiple colors',
+        'Easy care'
+      ],
+      additionalImages: [elegantDrapes, blackoutCurtains, wovenWood]
     },
     {
       id: 8,
       title: 'Modern Cafe',
       category: 'commercial',
       image: sheerCurtains2,
-      description: 'Contemporary sheer curtains for a cozy cafe atmosphere'
+      description: 'Contemporary sheer curtains for a cozy cafe atmosphere',
+      price: '$279.99',
+      features: [
+        'Light filtering',
+        'Soft drape',
+        'Multiple colors',
+        'Easy care'
+      ],
+      additionalImages: [elegantDrapes, blackoutCurtains, wovenWood]
     },
     {
       id: 9,
       title: 'Home Theater',
       category: 'residential',
       image: blackoutCurtains,
-      description: 'Blackout curtains for the perfect home theater experience'
+      description: 'Blackout curtains for the perfect home theater experience',
+      price: '$399.99',
+      features: [
+        '100% light blocking',
+        'Energy efficient',
+        'Noise reduction',
+        'Multiple colors'
+      ],
+      additionalImages: [elegantDrapes, sheerCurtains, wovenWood]
     },
     {
       id: 10,
       title: 'Natural Living Space',
       category: 'residential',
       image: wovenWood,
-      description: 'Woven wood shades bringing natural elements indoors'
+      description: 'Woven wood shades bringing natural elements indoors',
+      price: '$349.99',
+      features: [
+        'Natural materials',
+        'Unique patterns',
+        'Light filtering',
+        'Custom sizing'
+      ],
+      additionalImages: [elegantDrapes, sheerCurtains, blackoutCurtains]
     },
     {
       id: 11,
       title: 'Organic Design',
       category: 'residential',
       image: wovenWood2,
-      description: 'Natural woven wood shades for an organic aesthetic'
+      description: 'Natural woven wood shades for an organic aesthetic',
+      price: '$379.99',
+      features: [
+        'Natural materials',
+        'Unique patterns',
+        'Light filtering',
+        'Custom sizing'
+      ],
+      additionalImages: [elegantDrapes, sheerCurtains, blackoutCurtains]
     },
     {
       id: 12,
       title: 'Modern Apartment',
       category: 'residential',
       image: modernLiving,
-      description: 'Contemporary window treatments in a modern apartment setting'
+      description: 'Contemporary window treatments in a modern apartment setting',
+      price: '$499.99',
+      features: [
+        'Modern design',
+        'Premium materials',
+        'Custom sizing',
+        'Professional installation'
+      ],
+      additionalImages: [modernLiving2, luxurySuite, officeSpace]
     },
     {
       id: 13,
       title: 'Corporate Space',
       category: 'commercial',
       image: officeSpace,
-      description: 'Professional window treatments for corporate environments'
+      description: 'Professional window treatments for corporate environments',
+      price: '$799.99',
+      features: [
+        'Commercial-grade materials',
+        'Light control',
+        'Energy efficiency',
+        'Professional installation'
+      ],
+      additionalImages: [modernLiving, luxurySuite, officeSpace2]
     },
     {
       id: 14,
       title: 'Professional Installation',
       category: 'installation',
       image: installation1,
-      description: 'Expert installation of custom window treatments'
+      description: 'Expert installation of custom window treatments',
+      price: 'Contact for Quote',
+      features: [
+        'Expert installation',
+        'Quality assurance',
+        'Clean installation',
+        'Post-installation support'
+      ],
+      additionalImages: [installation2, installation3, installation4]
     },
     {
       id: 15,
       title: 'Precision Fitting',
       category: 'installation',
       image: installation2,
-      description: 'Precise measurement and fitting of window treatments'
+      description: 'Precise measurement and fitting of window treatments',
+      price: 'Contact for Quote',
+      features: [
+        'Precise measurements',
+        'Quality assurance',
+        'Clean installation',
+        'Post-installation support'
+      ],
+      additionalImages: [installation1, installation3, installation4]
     },
     {
       id: 16,
       title: 'Quality Installation',
       category: 'installation',
       image: installation3,
-      description: 'Professional installation ensuring perfect fit and function'
+      description: 'Professional installation ensuring perfect fit and function',
+      price: 'Contact for Quote',
+      features: [
+        'Professional installation',
+        'Quality assurance',
+        'Clean installation',
+        'Post-installation support'
+      ],
+      additionalImages: [installation1, installation2, installation4]
     },
     {
       id: 17,
       title: 'Expert Setup',
       category: 'installation',
       image: installation4,
-      description: 'Skilled installation of premium window treatments'
+      description: 'Skilled installation of premium window treatments',
+      price: 'Contact for Quote',
+      features: [
+        'Expert installation',
+        'Quality assurance',
+        'Clean installation',
+        'Post-installation support'
+      ],
+      additionalImages: [installation1, installation2, installation3]
     },
     {
       id: 18,
       title: 'Modern Interior Design',
       category: 'inspiration',
       image: modernInterior,
-      description: 'Contemporary window treatment inspiration for modern homes'
+      description: 'Contemporary window treatment inspiration for modern homes',
+      price: 'View Only',
+      features: [
+        'Design inspiration',
+        'Modern aesthetics',
+        'Space planning',
+        'Style guidance'
+      ],
+      additionalImages: [elegantSpace, kimberleyInterior, moonInterior]
     },
     {
       id: 19,
       title: 'Elegant Living Space',
       category: 'inspiration',
       image: elegantSpace,
-      description: 'Inspiration for elegant window treatment solutions'
+      description: 'Inspiration for elegant window treatment solutions',
+      price: 'View Only',
+      features: [
+        'Design inspiration',
+        'Elegant aesthetics',
+        'Space planning',
+        'Style guidance'
+      ],
+      additionalImages: [modernInterior, kimberleyInterior, moonInterior]
     },
     {
       id: 20,
       title: 'Stylish Interior',
       category: 'inspiration',
       image: kimberleyInterior,
-      description: 'Stylish window treatment ideas for modern interiors'
+      description: 'Stylish window treatment ideas for modern interiors',
+      price: 'View Only',
+      features: [
+        'Design inspiration',
+        'Modern aesthetics',
+        'Space planning',
+        'Style guidance'
+      ],
+      additionalImages: [modernInterior, elegantSpace, moonInterior]
     },
     {
       id: 21,
       title: 'Natural Light Design',
       category: 'inspiration',
       image: moonInterior,
-      description: 'Design inspiration for maximizing natural light'
+      description: 'Design inspiration for maximizing natural light',
+      price: 'View Only',
+      features: [
+        'Design inspiration',
+        'Light optimization',
+        'Space planning',
+        'Style guidance'
+      ],
+      additionalImages: [modernInterior, elegantSpace, kimberleyInterior]
     },
     {
       id: 22,
       title: 'Contemporary Style',
       category: 'inspiration',
       image: dimasInterior,
-      description: 'Contemporary window treatment inspiration'
+      description: 'Contemporary window treatment inspiration',
+      price: 'View Only',
+      features: [
+        'Design inspiration',
+        'Contemporary aesthetics',
+        'Space planning',
+        'Style guidance'
+      ],
+      additionalImages: [modernInterior, elegantSpace, kimberleyInterior]
     },
     {
       id: 23,
       title: 'Modern Elegance',
       category: 'inspiration',
       image: deconovoInterior,
-      description: 'Elegant window treatment ideas for modern spaces'
+      description: 'Elegant window treatment ideas for modern spaces',
+      price: 'View Only',
+      features: [
+        'Design inspiration',
+        'Modern aesthetics',
+        'Space planning',
+        'Style guidance'
+      ],
+      additionalImages: [modernInterior, elegantSpace, kimberleyInterior]
     },
     {
       id: 24,
       title: 'Design Inspiration',
       category: 'inspiration',
       image: jonInterior,
-      description: 'Creative window treatment inspiration for your space'
+      description: 'Creative window treatment inspiration for your space',
+      price: 'View Only',
+      features: [
+        'Design inspiration',
+        'Creative aesthetics',
+        'Space planning',
+        'Style guidance'
+      ],
+      additionalImages: [modernInterior, elegantSpace, kimberleyInterior]
     }
   ];
 
@@ -665,9 +860,9 @@ const Projects: React.FC = () => {
             <SearchIcon />
             <SearchInput
               type="text"
-              placeholder="Search projects..."
+              placeholder="Search products..."
               value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
               whileFocus={{ scale: 1.02 }}
             />
           </SearchContainer>
@@ -679,7 +874,7 @@ const Projects: React.FC = () => {
               <FilterLabel>Style</FilterLabel>
               <FilterSelect
                 value={selectedStyle}
-                onChange={(e) => setSelectedStyle(e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setSelectedStyle(e.target.value)}
                 whileFocus={{ scale: 1.02 }}
               >
                 {styles.map(style => (
@@ -694,7 +889,7 @@ const Projects: React.FC = () => {
               <FilterLabel>Room Type</FilterLabel>
               <FilterSelect
                 value={selectedRoom}
-                onChange={(e) => setSelectedRoom(e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setSelectedRoom(e.target.value)}
                 whileFocus={{ scale: 1.02 }}
               >
                 {rooms.map(room => (
@@ -709,19 +904,20 @@ const Projects: React.FC = () => {
 
         <ProjectsGrid variants={gridVariants}>
           {filteredProjects.map((project) => (
-            <ProjectCard
-              key={project.id}
-              variants={cardVariants}
-              whileHover="hover"
-            >
-              <ProjectImage variants={imageVariants}>
-                <img src={project.image} alt={project.title} />
-              </ProjectImage>
-              <ProjectContent>
-                <ProjectTitle>{project.title}</ProjectTitle>
-                <ProjectDescription>{project.description}</ProjectDescription>
-              </ProjectContent>
-            </ProjectCard>
+            <Link to={`/product/${project.id}`} key={project.id} style={{ textDecoration: 'none', color: 'inherit' }}>
+              <ProjectCard
+                variants={cardVariants}
+                whileHover="hover"
+              >
+                <ProjectImage variants={imageVariants}>
+                  <img src={project.image} alt={project.title} />
+                </ProjectImage>
+                <ProjectContent>
+                  <ProjectTitle>{project.title}</ProjectTitle>
+                  <ProjectDescription>{project.description}</ProjectDescription>
+                </ProjectContent>
+              </ProjectCard>
+            </Link>
           ))}
         </ProjectsGrid>
       </MainContent>

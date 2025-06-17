@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import styled from 'styled-components';
+import { SiVisa, SiMastercard, SiAmericanexpress, SiPaypal } from 'react-icons/si';
 
 const FooterContainer = styled.footer`
   background: linear-gradient(to bottom, #1a1a1a, #111);
@@ -155,12 +156,15 @@ const PaymentMethods = styled.div`
   align-items: center;
 `;
 
-const PaymentIcon = styled.img`
-  height: 1.5rem;
-  opacity: 0.7;
-  transition: opacity 0.3s ease;
+const PaymentIcon = styled.div`
+  svg {
+    width: 40px;
+    height: 25px;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+  }
 
-  &:hover {
+  &:hover svg {
     opacity: 1;
   }
 `;
@@ -274,10 +278,18 @@ const Footer: React.FC = () => {
               © {new Date().getFullYear()} Luna Drapes. All rights reserved.
             </Copyright>
             <PaymentMethods>
-              <PaymentIcon src="https://via.placeholder.com/40x25" alt="Visa" />
-              <PaymentIcon src="https://via.placeholder.com/40x25" alt="Mastercard" />
-              <PaymentIcon src="https://via.placeholder.com/40x25" alt="American Express" />
-              <PaymentIcon src="https://via.placeholder.com/40x25" alt="PayPal" />
+              <PaymentIcon>
+                <SiVisa />
+              </PaymentIcon>
+              <PaymentIcon>
+                <SiMastercard />
+              </PaymentIcon>
+              <PaymentIcon>
+                <SiAmericanexpress />
+              </PaymentIcon>
+              <PaymentIcon>
+                <SiPaypal />
+              </PaymentIcon>
             </PaymentMethods>
           </BottomContent>
         </BottomSection>

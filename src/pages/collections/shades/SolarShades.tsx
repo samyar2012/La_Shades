@@ -3,9 +3,9 @@ import { ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import motorizedRoman from '../../../assets/photo_2025-06-01_20-53-12.jpg';
-import motorizedCellular from '../../../assets/kimberley-alpuerto-gYCj5LrI9wI-unsplash.jpg';
-import motorizedRoller from '../../../assets/moon-i87dB4Kd7nw-unsplash.jpg';
+import solarShadesImage from '../../../assets/solar-shades.jpg';
+import modernSolarImage from '../../../assets/modern-solar.jpg';
+import premiumSolarImage from '../../../assets/premium-solar.jpg';
 
 const PageContainer = styled(motion.div)`
   min-height: 100vh;
@@ -20,7 +20,7 @@ const Header = styled(motion.div)`
   align-items: center;
   justify-content: center;
   background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-              url(${motorizedRoman}) center/cover no-repeat;
+              url(${solarShadesImage}) center/cover no-repeat;
   padding: 2rem;
   text-align: center;
   color: white;
@@ -195,71 +195,11 @@ const StyleDescription = styled.p`
   margin-bottom: 1.5rem;
 `;
 
-const StyleLink = styled(motion(Link))`
-  font-family: 'Montserrat', sans-serif;
-  display: inline-block;
-  color: #b45309;
-  text-decoration: none;
-  font-size: 0.875rem;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  
-  &:hover {
-    color: #92400e;
-  }
-`;
-
 const RequestQuoteButton = styled(motion(Link))`
   font-family: 'Montserrat', sans-serif;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: #000;
-  color: white;
-  padding: 1rem 2rem;
-  border-radius: 0.375rem;
-  text-decoration: none;
-  font-size: 0.875rem;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  margin-top: 1rem;
-  
-  &:hover {
-    background: rgba(0, 0, 0, 0.9);
-    transform: translateY(-2px);
-  }
-`;
-
-const CTASection = styled(motion.div)`
-  text-align: center;
-  margin: 8rem auto;
-  max-width: 800px;
-`;
-
-const CTATitle = styled.h2`
-  font-family: 'Playfair Display', serif;
-  font-size: 2.5rem;
-  color: #000;
-  margin-bottom: 1rem;
-  font-weight: normal;
-`;
-
-const CTADescription = styled.p`
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1.125rem;
-  color: #333;
-  line-height: 1.6;
-  margin-bottom: 2rem;
-  max-width: 32rem;
-  margin-left: auto;
-  margin-right: auto;
-`;
-
-const CTALink = styled(motion(Link))`
-  font-family: 'Montserrat', sans-serif;
   background-color: transparent;
-  border: 2px solid #000;
-  color: #000;
+  border: 2px solid white;
+  color: white;
   padding: 1rem 2rem;
   font-size: 1rem;
   cursor: pointer;
@@ -269,54 +209,61 @@ const CTALink = styled(motion(Link))`
   text-decoration: none;
   
   &:hover {
-    background-color: #000;
-    color: white;
+    background-color: white;
+    color: black;
   }
 `;
 
-const MotorizedShades: React.FC = () => {
+const HeroButton = styled(motion(Link))`
+  font-family: 'Montserrat', sans-serif;
+  background-color: transparent;
+  border: 2px solid white;
+  color: white;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-decoration: none;
+  
+  &:hover {
+    background-color: white;
+    color: black;
+  }
+`;
+
+const SolarShades: React.FC = () => {
   const features = [
     {
-      title: 'Smart Control',
-      description: 'Control your shades with voice commands, smartphone apps, or automated schedules.'
-    },
-    {
-      title: 'Premium Operation',
-      description: 'Silent, smooth motorized operation with battery-powered or hardwired options.'
+      title: 'UV Protection',
+      description: 'Our solar shades provide superior UV protection while maintaining clear views and natural light, protecting your furnishings from sun damage.'
     },
     {
       title: 'Energy Efficiency',
-      description: 'Automated schedules help optimize energy usage and maintain comfortable temperatures.'
+      description: 'Reduce heat gain and lower energy costs with our solar shades, designed to block solar heat while maintaining visibility.'
     },
     {
-      title: 'Enhanced Security',
-      description: "Program your shades to open and close when you're away for added security."
-    },
-    {
-      title: 'Custom Integration',
-      description: 'Seamlessly integrate with your existing smart home system.'
-    },
-    {
-      title: 'Premium Materials',
-      description: 'High-quality fabrics and components for lasting performance and style.'
+      title: 'Modern Design',
+      description: 'Available in a variety of openness factors and colors, our solar shades offer a sleek, contemporary look for any space.'
     }
   ];
 
   const styles = [
     {
-      name: 'Motorized Roman',
-      description: 'Experience the perfect blend of classic elegance and modern convenience with our Motorized Roman shades. These sophisticated window treatments combine timeless design with smart technology for effortless control.',
-      image: motorizedRoman
+      name: 'Classic Solar',
+      description: 'Our Classic Solar shades provide excellent UV protection and heat reduction while maintaining clear views. Perfect for any room in your home.',
+      image: solarShadesImage
     },
     {
-      name: 'Motorized Cellular',
-      description: 'Our Motorized Cellular shades offer superior energy efficiency with the convenience of automated control. Perfect for hard-to-reach windows, these shades provide excellent insulation and light control at the touch of a button.',
-      image: motorizedCellular
+      name: 'Modern Solar',
+      description: 'Experience contemporary style with our Modern Solar shades. These sleek window treatments combine innovative technology with elegant design.',
+      image: modernSolarImage
     },
     {
-      name: 'Motorized Roller',
-      description: 'Discover the ultimate in modern simplicity with our Motorized Roller shades. Featuring clean lines and automated operation, these shades provide precise light control and privacy with minimal effort.',
-      image: motorizedRoller
+      name: 'Premium Solar',
+      description: 'Discover our Premium Solar shades, featuring advanced materials and superior performance for maximum UV protection and energy efficiency.',
+      image: premiumSolarImage
     }
   ];
 
@@ -328,76 +275,38 @@ const MotorizedShades: React.FC = () => {
 
   const headerVariants = {
     initial: { opacity: 0, y: 20 },
-    animate: { 
-      opacity: 1, 
-      y: 0,
-      transition: { duration: 0.8 }
-    }
+    animate: { opacity: 1, y: 0 },
+    exit: { opacity: 0, y: -20 }
   };
 
   const titleVariants = {
     initial: { opacity: 0, y: 20 },
-    animate: { 
-      opacity: 1, 
-      y: 0,
-      transition: { duration: 0.8, delay: 0.2 }
-    }
+    animate: { opacity: 1, y: 0 },
+    exit: { opacity: 0, y: -20 }
   };
 
   const descriptionVariants = {
     initial: { opacity: 0, y: 20 },
-    animate: { 
-      opacity: 1, 
-      y: 0,
-      transition: { duration: 0.8, delay: 0.4 }
-    }
+    animate: { opacity: 1, y: 0 },
+    exit: { opacity: 0, y: -20 }
   };
 
   const gridVariants = {
     initial: { opacity: 0 },
-    animate: { 
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2
-      }
-    }
+    animate: { opacity: 1 },
+    exit: { opacity: 0 }
   };
 
   const cardVariants = {
     initial: { opacity: 0, y: 20 },
-    animate: { 
-      opacity: 1, 
-      y: 0,
-      transition: { duration: 0.6 }
-    }
+    animate: { opacity: 1, y: 0 },
+    exit: { opacity: 0, y: -20 }
   };
 
   const stylesGridVariants = {
     initial: { opacity: 0 },
-    animate: { 
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2
-      }
-    }
-  };
-
-  const styleCardVariants = {
-    initial: { opacity: 0, y: 20 },
-    animate: { 
-      opacity: 1, 
-      y: 0,
-      transition: { duration: 0.6 }
-    }
-  };
-
-  const ctaVariants = {
-    initial: { opacity: 0, y: 20 },
-    animate: { 
-      opacity: 1, 
-      y: 0,
-      transition: { duration: 0.8, delay: 0.6 }
-    }
+    animate: { opacity: 1 },
+    exit: { opacity: 0 }
   };
 
   return (
@@ -409,53 +318,41 @@ const MotorizedShades: React.FC = () => {
     >
       <Header variants={headerVariants}>
         <Container>
-          <BackLink 
-            to="/collections/shades"
-            whileHover={{ x: -5 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <ArrowLeft className="h-5 w-5 mr-2" />
+          <BackLink to="/collections/shades" variants={titleVariants}>
+            <ArrowLeft size={20} style={{ marginRight: '0.5rem' }} />
             Back to Shades
           </BackLink>
-          <Title variants={titleVariants}>Motorized Shades</Title>
+          <Title variants={titleVariants}>Solar Shades</Title>
           <Description variants={descriptionVariants}>
-            Experience the perfect blend of luxury and convenience with our motorized shades. 
-            Control your window treatments with the touch of a button or through your smart home system.
+            Protect your space from harmful UV rays while maintaining clear views with our Solar Shades. 
+            Experience the perfect balance of protection and visibility.
           </Description>
-          <RequestQuoteButton
-            to="/quote-request?type=shades&model=Motorized Shades"
+          <HeroButton
+            to="/quote-request?type=shades&model=Solar Shades"
             variants={descriptionVariants}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
             Request a Quote
-          </RequestQuoteButton>
+          </HeroButton>
         </Container>
       </Header>
 
       <Container>
         <FeaturesGrid variants={gridVariants}>
           {features.map((feature) => (
-            <FeatureCard
-              key={feature.title}
-              variants={cardVariants}
-              whileHover={{ y: -10 }}
-            >
+            <FeatureCard key={feature.title} variants={cardVariants}>
               <FeatureTitle>{feature.title}</FeatureTitle>
               <FeatureDescription>{feature.description}</FeatureDescription>
             </FeatureCard>
           ))}
         </FeaturesGrid>
 
-        <StylesSection>
+        <StylesSection variants={stylesGridVariants}>
           <StylesTitle>Available Styles</StylesTitle>
-          <StylesGrid variants={stylesGridVariants}>
+          <StylesGrid>
             {styles.map((style) => (
-              <StyleCard
-                key={style.name}
-                variants={styleCardVariants}
-                whileHover={{ y: -10 }}
-              >
+              <StyleCard key={style.name} variants={cardVariants}>
                 <StyleImage src={style.image} alt={style.name} />
                 <StyleContent>
                   <StyleName>{style.name}</StyleName>
@@ -472,23 +369,9 @@ const MotorizedShades: React.FC = () => {
             ))}
           </StylesGrid>
         </StylesSection>
-
-        <CTASection variants={ctaVariants}>
-          <CTATitle>Elevate Your Home's Intelligence</CTATitle>
-          <CTADescription>
-            Discover how our motorized shades can transform your living space with smart technology. Our automation specialists are ready to help you select the perfect motorized shade system that combines style, convenience, and innovation.
-          </CTADescription>
-          <CTALink 
-            to="/contact"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Schedule Your Consultation
-          </CTALink>
-        </CTASection>
       </Container>
     </PageContainer>
   );
 };
 
-export default MotorizedShades; 
+export default SolarShades; 

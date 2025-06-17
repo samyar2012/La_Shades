@@ -3,9 +3,9 @@ import { ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import motorizedRoman from '../../../assets/photo_2025-06-01_20-53-12.jpg';
-import motorizedCellular from '../../../assets/kimberley-alpuerto-gYCj5LrI9wI-unsplash.jpg';
-import motorizedRoller from '../../../assets/moon-i87dB4Kd7nw-unsplash.jpg';
+import sheerDraperyImage from '../../../assets/photo_2025-06-01_21-25-59.jpg';
+import modernSheerImage from '../../../assets/photo_2025-06-01_21-26-00.jpg';
+import premiumSheerImage from '../../../assets/photo_2025-06-01_21-26-01.jpg';
 
 const PageContainer = styled(motion.div)`
   min-height: 100vh;
@@ -20,7 +20,7 @@ const Header = styled(motion.div)`
   align-items: center;
   justify-content: center;
   background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-              url(${motorizedRoman}) center/cover no-repeat;
+              url(${sheerDraperyImage}) center/cover no-repeat;
   padding: 2rem;
   text-align: center;
   color: white;
@@ -173,6 +173,11 @@ const StyleImage = styled.img`
   width: 100%;
   height: 300px;
   object-fit: cover;
+  transition: all 0.3s ease;
+
+  ${StyleCard}:hover & {
+    transform: scale(1.05);
+  }
 `;
 
 const StyleContent = styled.div`
@@ -195,38 +200,32 @@ const StyleDescription = styled.p`
   margin-bottom: 1.5rem;
 `;
 
-const StyleLink = styled(motion(Link))`
-  font-family: 'Montserrat', sans-serif;
-  display: inline-block;
-  color: #b45309;
-  text-decoration: none;
-  font-size: 0.875rem;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  
-  &:hover {
-    color: #92400e;
-  }
-`;
-
 const RequestQuoteButton = styled(motion(Link))`
   font-family: 'Montserrat', sans-serif;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: #000;
-  color: white;
-  padding: 1rem 2rem;
-  border-radius: 0.375rem;
+  display: inline-block;
+  color: #000;
   text-decoration: none;
   font-size: 0.875rem;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  margin-top: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
   
-  &:hover {
-    background: rgba(0, 0, 0, 0.9);
-    transform: translateY(-2px);
+  &::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    bottom: -2px;
+    left: 0;
+    background-color: #000;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+  }
+  
+  &:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
   }
 `;
 
@@ -266,7 +265,6 @@ const CTALink = styled(motion(Link))`
   transition: all 0.3s ease;
   text-transform: uppercase;
   letter-spacing: 1px;
-  text-decoration: none;
   
   &:hover {
     background-color: #000;
@@ -274,49 +272,49 @@ const CTALink = styled(motion(Link))`
   }
 `;
 
-const MotorizedShades: React.FC = () => {
+const SheerDrapery: React.FC = () => {
   const features = [
     {
-      title: 'Smart Control',
-      description: 'Control your shades with voice commands, smartphone apps, or automated schedules.'
+      title: 'Elegant Light Filtering',
+      description: 'Our sheer drapery provides the perfect balance of privacy and natural light, creating a soft, diffused glow in any room.'
     },
     {
-      title: 'Premium Operation',
-      description: 'Silent, smooth motorized operation with battery-powered or hardwired options.'
-    },
-    {
-      title: 'Energy Efficiency',
-      description: 'Automated schedules help optimize energy usage and maintain comfortable temperatures.'
-    },
-    {
-      title: 'Enhanced Security',
-      description: "Program your shades to open and close when you're away for added security."
-    },
-    {
-      title: 'Custom Integration',
-      description: 'Seamlessly integrate with your existing smart home system.'
+      title: 'Versatile Design',
+      description: 'Available in a wide range of colors and textures, our sheer drapery complements any interior style from modern to traditional.'
     },
     {
       title: 'Premium Materials',
-      description: 'High-quality fabrics and components for lasting performance and style.'
+      description: 'Crafted from high-quality fabrics, our sheer drapery offers durability and beauty while maintaining its delicate appearance.'
+    },
+    {
+      title: 'Easy Maintenance',
+      description: 'Designed for easy cleaning and care, our sheer drapery maintains its beauty with minimal effort.'
+    },
+    {
+      title: 'Custom Sizing',
+      description: 'Perfect fit for any window with precise measurements and professional installation.'
+    },
+    {
+      title: 'Energy Efficient',
+      description: 'Help regulate room temperature and reduce energy costs throughout the year.'
     }
   ];
 
   const styles = [
     {
-      name: 'Motorized Roman',
-      description: 'Experience the perfect blend of classic elegance and modern convenience with our Motorized Roman shades. These sophisticated window treatments combine timeless design with smart technology for effortless control.',
-      image: motorizedRoman
+      name: 'Classic Sheer',
+      description: 'Our Classic Sheer drapery provides timeless elegance with a soft, flowing appearance. Perfect for creating a light, airy atmosphere in any room.',
+      image: sheerDraperyImage
     },
     {
-      name: 'Motorized Cellular',
-      description: 'Our Motorized Cellular shades offer superior energy efficiency with the convenience of automated control. Perfect for hard-to-reach windows, these shades provide excellent insulation and light control at the touch of a button.',
-      image: motorizedCellular
+      name: 'Modern Sheer',
+      description: 'Experience contemporary style with our Modern Sheer drapery. These sophisticated window treatments offer enhanced light control and visual depth.',
+      image: modernSheerImage
     },
     {
-      name: 'Motorized Roller',
-      description: 'Discover the ultimate in modern simplicity with our Motorized Roller shades. Featuring clean lines and automated operation, these shades provide precise light control and privacy with minimal effort.',
-      image: motorizedRoller
+      name: 'Premium Sheer',
+      description: 'Discover our Premium Sheer drapery, featuring high-quality materials and superior craftsmanship for the ultimate in style and performance.',
+      image: premiumSheerImage
     }
   ];
 
@@ -372,7 +370,7 @@ const MotorizedShades: React.FC = () => {
     }
   };
 
-  const stylesGridVariants = {
+  const stylesVariants = {
     initial: { opacity: 0 },
     animate: { 
       opacity: 1,
@@ -410,26 +408,17 @@ const MotorizedShades: React.FC = () => {
       <Header variants={headerVariants}>
         <Container>
           <BackLink 
-            to="/collections/shades"
+            to="/collections/drapery"
             whileHover={{ x: -5 }}
             whileTap={{ scale: 0.95 }}
           >
             <ArrowLeft className="h-5 w-5 mr-2" />
-            Back to Shades
+            Back to Drapery
           </BackLink>
-          <Title variants={titleVariants}>Motorized Shades</Title>
+          <Title variants={titleVariants}>Sheer Drapery</Title>
           <Description variants={descriptionVariants}>
-            Experience the perfect blend of luxury and convenience with our motorized shades. 
-            Control your window treatments with the touch of a button or through your smart home system.
+            Experience the perfect blend of elegance and functionality with our premium sheer drapery. From classic to contemporary designs, find the ideal solution for your windows.
           </Description>
-          <RequestQuoteButton
-            to="/quote-request?type=shades&model=Motorized Shades"
-            variants={descriptionVariants}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Request a Quote
-          </RequestQuoteButton>
         </Container>
       </Header>
 
@@ -447,9 +436,9 @@ const MotorizedShades: React.FC = () => {
           ))}
         </FeaturesGrid>
 
-        <StylesSection>
-          <StylesTitle>Available Styles</StylesTitle>
-          <StylesGrid variants={stylesGridVariants}>
+        <StylesSection variants={stylesVariants}>
+          <StylesTitle>Our Sheer Drapery Styles</StylesTitle>
+          <StylesGrid>
             {styles.map((style) => (
               <StyleCard
                 key={style.name}
@@ -461,7 +450,7 @@ const MotorizedShades: React.FC = () => {
                   <StyleName>{style.name}</StyleName>
                   <StyleDescription>{style.description}</StyleDescription>
                   <RequestQuoteButton
-                    to={`/quote-request?type=shades&model=${encodeURIComponent(style.name)}`}
+                    to={`/quote-request?type=drapery&model=${style.name}`}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
@@ -474,16 +463,16 @@ const MotorizedShades: React.FC = () => {
         </StylesSection>
 
         <CTASection variants={ctaVariants}>
-          <CTATitle>Elevate Your Home's Intelligence</CTATitle>
+          <CTATitle>Transform Your Windows</CTATitle>
           <CTADescription>
-            Discover how our motorized shades can transform your living space with smart technology. Our automation specialists are ready to help you select the perfect motorized shade system that combines style, convenience, and innovation.
+            Schedule a consultation with our design experts today and discover how our premium sheer drapery can enhance your space.
           </CTADescription>
           <CTALink 
             to="/contact"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            Schedule Your Consultation
+            Schedule Consultation
           </CTALink>
         </CTASection>
       </Container>
@@ -491,4 +480,4 @@ const MotorizedShades: React.FC = () => {
   );
 };
 
-export default MotorizedShades; 
+export default SheerDrapery; 

@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import blindsImage from '../../assets/photo_2025-06-01_20-53-29.jpg';
 import curtainsImage from '../../assets/photo_2025-06-01_20-53-26.jpg';
 import shadesImage from '../../assets/photo_2025-06-01_20-53-17.jpg';
-import accessoriesImage from '../../assets/photo_2025-06-01_20-53-12.jpg';
+import draperyImage from '../../assets/photo_2025-06-01_21-25-59.jpg';
 
 const PageContainer = styled(motion.div)`
   min-height: 100vh;
@@ -181,10 +181,10 @@ const Collections: React.FC = () => {
       link: '/collections/shades'
     },
     {
-      title: 'Accessories',
-      description: 'Complete your window treatments with our selection of premium accessories.',
-      image: accessoriesImage,
-      link: '/collections/accessories'
+      title: 'Drapery',
+      description: 'Experience our luxurious drapery collection featuring sheer, blackout, decorative, and motorized options.',
+      image: draperyImage,
+      link: '/collections/drapery'
     }
   ];
 
