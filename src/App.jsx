@@ -52,6 +52,11 @@ import CurtainRods from './pages/collections/accessories/CurtainRods';
 import NotFound from './pages/NotFound';
 import FabricDrapery from './pages/collections/drapery/FabricDrapery';
 import ProductDetail from './pages/ProductDetail';
+import PrivacyPolicy from './pages/legal/PrivacyPolicy';
+import TermsOfService from './pages/legal/TermsOfService';
+import ShippingPolicy from './pages/legal/ShippingPolicy';
+import ReturnPolicy from './pages/legal/ReturnPolicy';
+import FAQ from './pages/legal/FAQ';
 
 function App() {
   useEffect(() => {
@@ -121,6 +126,12 @@ function App() {
           <Route path="/collections/curtains/decorative-curtains" element={<DecorativeCurtains />} />
           <Route path="/quote-request" element={<QuoteRequest />} />
           <Route path="/product/:id" element={<ProductDetail />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/terms-of-service" element={<TermsOfService />} />
+          <Route path="/shipping-policy" element={<ShippingPolicy />} />
+          <Route path="/return-policy" element={<ReturnPolicy />} />
+          <Route path="/faq" element={<FAQ />} />
+
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>

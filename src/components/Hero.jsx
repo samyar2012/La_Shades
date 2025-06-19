@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import heroImage from '../assets/0026.png';
 
 const HeroContainer = styled(motion.div)`
   min-height: 100vh;
@@ -10,7 +11,7 @@ const HeroContainer = styled(motion.div)`
   align-items: center;
   justify-content: center;
   background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-              url('/src/assets/0026.png') center/cover no-repeat;
+              url(${heroImage}) center/cover no-repeat;
   padding: 2rem;
   text-align: center;
   color: white;

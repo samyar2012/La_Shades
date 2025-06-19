@@ -128,13 +128,9 @@ const ProductCard = styled.div`
   flex-shrink: 0;
   overflow: hidden;
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  transform: translateY(-5px);
   transition: all 0.3s ease;
-  
-  &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
-  }
 `;
 
 const ProductImage = styled.img`
@@ -144,28 +140,20 @@ const ProductImage = styled.img`
   height: 100%;
   object-fit: cover;
   transition: transform 0.5s ease;
-  
-  ${ProductCard}:hover & {
-    transform: scale(1.1);
-  }
+  transform: scale(1.1);
 `;
 
 const ProductOverlay = styled.div`
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0);
+  background: rgba(0, 0, 0, 0.7);
   transition: background 0.3s ease;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 2rem;
-  opacity: 0;
-  
-  ${ProductCard}:hover & {
-    background: rgba(0, 0, 0, 0.7);
-    opacity: 1;
-  }
+  opacity: 1;
 `;
 
 const ProductTitle = styled.h3`
@@ -188,7 +176,7 @@ const ProductDescription = styled.p`
 const ProductLink = styled(Link)`
   font-family: 'Montserrat', sans-serif;
   background: white;
-  color: #333;
+  color: #000;
   padding: 0.75rem 2rem;
   text-decoration: none;
   text-transform: uppercase;
@@ -199,7 +187,9 @@ const ProductLink = styled(Link)`
   overflow: hidden;
   transition: all 0.3s ease;
   z-index: 1;
-  
+  box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+  transform: translateY(-2px);
+
   &::before {
     content: '';
     position: absolute;
@@ -208,24 +198,9 @@ const ProductLink = styled(Link)`
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.1);
-    transform: translateX(-100%);
+    transform: translateX(0);
     transition: transform 0.3s ease;
     z-index: -1;
-  }
-  
-  &:hover {
-    color: #000;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    
-    &::before {
-      transform: translateX(0);
-    }
-  }
-  
-  &:active {
-    transform: translateY(0);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
 `;
 
@@ -287,8 +262,7 @@ const CTASection = styled.div`
   border-radius: 8px;
 `;
 
-const CTATitle = styled.h2`
-  font-family: 'Playfair Display', serif;
+const CTATitle = styled.h2`  font-family: 'Playfair Display', serif;
   font-size: 2.5rem;
   color: #333;
   margin-bottom: 1.5rem;

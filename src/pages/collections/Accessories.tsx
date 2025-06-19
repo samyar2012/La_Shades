@@ -5,6 +5,7 @@ import rod from '../../assets/photo_2025-06-01_21-25-55.jpg';
 import finial from '../../assets/photo_2025-06-01_21-25-57.jpg';
 import bracket from '../../assets/photo_2025-06-01_21-26-00.jpg';
 import tieback from '../../assets/photo_2025-06-01_20-53-26.jpg';
+import heroImage from '../../assets/photo_2025-06-01_20-53-17.jpg';
 
 const PageContainer = styled.div`
   min-height: 100vh;
@@ -19,7 +20,7 @@ const Header = styled.div`
   align-items: center;
   justify-content: center;
   background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-              url('/src/assets/photo_2025-06-01_20-53-17.jpg') center/cover no-repeat;
+              url(${heroImage}) center/cover no-repeat;
   padding: 2rem;
   text-align: center;
   color: white;

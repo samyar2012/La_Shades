@@ -200,6 +200,26 @@ const StyleDescription = styled.p`
   margin-bottom: 1.5rem;
 `;
 
+const RequestQuoteButton = styled(motion(Link))`
+  font-family: 'Montserrat', sans-serif;
+  background-color: transparent;
+  border: 2px solid #000;
+  color: #000;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: inline-block;
+  text-decoration: none;
+  
+  &:hover {
+    background-color: #000;
+    color: white;
+  }
+`;
+
 const FabricDrapery: React.FC = () => {
   return (
     <PageContainer
@@ -281,6 +301,13 @@ const FabricDrapery: React.FC = () => {
                   Timeless designs that bring sophistication to any room. Perfect for traditional
                   and formal spaces, these drapes feature rich textures and elegant pleating.
                 </StyleDescription>
+                <RequestQuoteButton
+                  to={`/quote-request?type=drapery&model=Classic Elegance`}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  Request a Quote
+                </RequestQuoteButton>
               </StyleContent>
             </StyleCard>
 
@@ -292,6 +319,13 @@ const FabricDrapery: React.FC = () => {
                   Clean lines and contemporary designs for the modern home. These drapes
                   feature sleek silhouettes and innovative fabric treatments.
                 </StyleDescription>
+                <RequestQuoteButton
+                  to={`/quote-request?type=drapery&model=Modern Minimalist`}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  Request a Quote
+                </RequestQuoteButton>
               </StyleContent>
             </StyleCard>
           </StylesGrid>

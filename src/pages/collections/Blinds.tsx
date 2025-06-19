@@ -6,6 +6,7 @@ import verticalBlind from '../../assets/photo_2025-06-01_21-25-55.jpg';
 import horizontalBlind from '../../assets/photo_2025-06-01_21-25-57.jpg';
 import miniBlind from '../../assets/photo_2025-06-01_21-26-00.jpg';
 import panelBlind from '../../assets/photo_2025-06-01_20-53-26.jpg';
+import heroImage from '../../assets/wade-lambert-LRr2VIwWgC0-unsplash.jpg';
 
 const PageContainer = styled(motion.div)`
   min-height: 100vh;
@@ -20,7 +21,7 @@ const Header = styled(motion.div)`
   align-items: center;
   justify-content: center;
   background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-              url('/src/assets/wade-lambert-LRr2VIwWgC0-unsplash.jpg') center/cover no-repeat;
+              url(${heroImage}) center/cover no-repeat;
   padding: 2rem;
   text-align: center;
   color: white;

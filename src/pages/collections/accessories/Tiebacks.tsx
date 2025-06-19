@@ -423,7 +423,6 @@ const Tiebacks: React.FC = () => {
                   <StyleContent>
                     <StyleName>{style.name}</StyleName>
                     <StyleDescription>{style.description}</StyleDescription>
-                    <StyleLink to={style.link}>Request Quote</StyleLink>
                   </StyleContent>
                 </StyleCard>
               ))}
@@ -435,9 +434,10 @@ const Tiebacks: React.FC = () => {
           <Container>
             <CTATitle>Ready to Complete Your Look?</CTATitle>
             <CTADescription>
-              Schedule a consultation with our design experts to find the perfect tiebacks for your curtains.
+              Visit our showroom to explore our complete collection of tiebacks in person.
+              Our design experts are available to help you find the perfect match for your curtains.
             </CTADescription>
-            <CTALink to="/contact">Schedule Consultation</CTALink>
+            <CTALink to="/contact">Schedule Showroom Visit</CTALink>
           </Container>
         </CTASection>
       </Container>

@@ -423,7 +423,6 @@ const Finials: React.FC = () => {
                   <StyleContent>
                     <StyleName>{style.name}</StyleName>
                     <StyleDescription>{style.description}</StyleDescription>
-                    <StyleLink to={style.link}>Request Quote</StyleLink>
                   </StyleContent>
                 </StyleCard>
               ))}
@@ -435,9 +434,10 @@ const Finials: React.FC = () => {
           <Container>
             <CTATitle>Ready to Complete Your Look?</CTATitle>
             <CTADescription>
-              Schedule a consultation with our design experts to find the perfect finials for your curtain rods.
+              Visit our showroom to explore our complete collection of finials in person.
+              Our design experts are available to help you find the perfect match for your curtain rods.
             </CTADescription>
-            <CTALink to="/contact">Schedule Consultation</CTALink>
+            <CTALink to="/contact">Schedule Showroom Visit</CTALink>
           </Container>
         </CTASection>
       </Container>

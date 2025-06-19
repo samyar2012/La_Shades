@@ -7,7 +7,7 @@ import customDesign from '../assets/photo_2025-06-01_20-53-29.jpg';
 import installation from '../assets/photo_2025-06-01_20-53-26.jpg';
 import consultation from '../assets/photo_2025-06-01_20-53-17.jpg';
 
-const ServicesSection = styled(motion.section)`
+const ServicesSection = styled.section`
   padding: 5rem 2rem;
   background: linear-gradient(rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.02));
 `;
@@ -64,49 +64,35 @@ const ServicesGrid = styled(motion.div)`
   }
 `;
 
-const ServiceCard = styled(motion.div)`
+const ServiceCard = styled.div`
   position: relative;
   height: 400px;
   overflow: hidden;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
-  
-  &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
-  }
 `;
 
-const ServiceImage = styled(motion.img)`
+const ServiceImage = styled.img`
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s ease;
-  
-  ${ServiceCard}:hover & {
-    transform: scale(1.1);
-  }
+  z-index: 1;
 `;
 
-const ServiceOverlay = styled(motion.div)`
+const ServiceOverlay = styled.div`
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0);
-  transition: background 0.3s ease;
+  background: rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 2rem;
-  opacity: 0;
-  
-  ${ServiceCard}:hover & {
-    background: rgba(0, 0, 0, 0.7);
-    opacity: 1;
-  }
+  opacity: 1;
+  z-index: 2;
 `;
 
 const ServiceTitle = styled(motion.h3)`
@@ -251,19 +237,6 @@ const Services: React.FC = () => {
     }
   };
 
-  const cardVariants = {
-    initial: { opacity: 0, y: 20 },
-    animate: { 
-      opacity: 1, 
-      y: 0,
-      transition: { duration: 0.6 }
-    },
-    hover: { 
-      y: -5,
-      transition: { duration: 0.2 }
-    }
-  };
-
   const sectionProps: HTMLMotionProps<"section"> = {
     initial: "initial",
     whileInView: "animate",
@@ -272,11 +245,7 @@ const Services: React.FC = () => {
   };
 
   return (
-    <motion.section
-      id="services"
-      {...sectionProps}
-      style={{ padding: '5rem 2rem', background: 'linear-gradient(rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.02))' }}
-    >
+    <ServicesSection id="services">
       <Container>
         <SectionHeader variants={headerVariants}>
           <SectionTitle variants={titleVariants}>Our Services</SectionTitle>
@@ -288,30 +257,12 @@ const Services: React.FC = () => {
 
         <ServicesGrid variants={gridVariants}>
           {services.map((service) => (
-            <ServiceCard
-              key={service.id}
-              variants={cardVariants}
-              whileHover="hover"
-            >
-              <motion.img 
+            <ServiceCard key={service.id}>
+              <ServiceImage 
                 src={service.image} 
                 alt={service.title}
-                initial={{ scale: 1 }}
-                whileHover={{ scale: 1.1 }}
-                transition={{ duration: 0.5 }}
-                style={{
-                  position: 'absolute',
-                  inset: 0,
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'cover'
-                }}
               />
-              <ServiceOverlay
-                initial={{ opacity: 0 }}
-                whileHover={{ opacity: 1 }}
-                transition={{ duration: 0.3 }}
-              >
+              <ServiceOverlay>
                 <ServiceTitle>{service.title}</ServiceTitle>
                 <ServiceDescription>{service.description}</ServiceDescription>
                 <ServiceLink 
@@ -327,7 +278,7 @@ const Services: React.FC = () => {
           ))}
         </ServicesGrid>
       </Container>
-    </motion.section>
+    </ServicesSection>
   );
 };
 

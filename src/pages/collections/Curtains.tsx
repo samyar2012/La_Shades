@@ -6,6 +6,7 @@ import sheerCurtain from '../../assets/photo_2025-06-01_21-25-55.jpg';
 import blackoutCurtain from '../../assets/photo_2025-06-01_21-25-57.jpg';
 import thermalCurtain from '../../assets/photo_2025-06-01_21-26-00.jpg';
 import decorativeCurtain from '../../assets/photo_2025-06-01_20-53-26.jpg';
+import heroImage from '../../assets/kimberley-alpuerto-gYCj5LrI9wI-unsplash.jpg';
 
 const PageContainer = styled(motion.div)`
   min-height: 100vh;
@@ -20,7 +21,7 @@ const Header = styled(motion.div)`
   align-items: center;
   justify-content: center;
   background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-              url('/src/assets/kimberley-alpuerto-gYCj5LrI9wI-unsplash.jpg') center/cover no-repeat;
+              url(${heroImage}) center/cover no-repeat;
   padding: 2rem;
   text-align: center;
   color: white;

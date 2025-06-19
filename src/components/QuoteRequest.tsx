@@ -41,21 +41,94 @@ interface FormData {
     lng: number;
     address: string;
   } | null;
+  custom_product_model?: string;
 }
 
 // Product categories and their models
 const PRODUCT_CATEGORIES = {
-  blinds: ['Horizontal Blinds', 'Vertical Blinds', 'Mini Blinds', 'Panel Blinds'],
-  curtains: ['Sheer Curtains', 'Blackout Curtains', 'Thermal Curtains', 'Decorative Curtains'],
-  shades: ['Roller Shades', 'Roman Shades', 'Motorized Shades', 'Woven Wood Shades'],
-  accessories: ['Curtain Rods', 'Finials', 'Tiebacks', 'Valances']
+  blinds: [
+    'Horizontal Blinds - Standard',
+    'Horizontal Blinds - Premium',
+    'Vertical Blinds - Standard',
+    'Vertical Blinds - Premium',
+    'Mini Blinds - Standard',
+    'Mini Blinds - Premium',
+    'Panel Blinds - Standard',
+    'Panel Blinds - Premium',
+    'Cellular Blinds - Standard',
+    'Cellular Blinds - Premium',
+    'Roman Blinds - Classic',
+    'Roman Blinds - Modern',
+    'Venetian Blinds - Standard',
+    'Venetian Blinds - Premium',
+    'Wood Blinds - Standard',
+    'Wood Blinds - Premium',
+    'Other'
+  ],
+  curtains: [
+    'Sheer Curtains - Classic',
+    'Sheer Curtains - Modern',
+    'Blackout Curtains - Standard',
+    'Blackout Curtains - Premium',
+    'Thermal Curtains - Standard',
+    'Thermal Curtains - Premium',
+    'Decorative Curtains - Classic',
+    'Decorative Curtains - Modern',
+    'Panel Curtains - Standard',
+    'Panel Curtains - Premium',
+    'Cafe Curtains - Classic',
+    'Cafe Curtains - Modern',
+    'Tab Top Curtains - Standard',
+    'Tab Top Curtains - Premium',
+    'Grommet Curtains - Standard',
+    'Grommet Curtains - Premium',
+    'Other'
+  ],
+  shades: [
+    'Roller Shades - Standard',
+    'Roller Shades - Premium',
+    'Roman Shades - Classic',
+    'Roman Shades - Modern',
+    'Motorized Shades - Standard',
+    'Motorized Shades - Premium',
+    'Woven Wood Shades - Standard',
+    'Woven Wood Shades - Premium',
+    'Cellular Shades - Standard',
+    'Cellular Shades - Premium',
+    'Solar Shades - Standard',
+    'Solar Shades - Premium',
+    'Pleated Shades - Standard',
+    'Pleated Shades - Premium',
+    'Balloon Shades - Classic',
+    'Balloon Shades - Modern',
+    'Other'
+  ],
+  drapery: [
+    'Fabric Drapery - Classic Elegance',
+    'Fabric Drapery - Modern Minimalist',
+    'Sheer Drapery - Classic',
+    'Sheer Drapery - Modern',
+    'Blackout Drapery - Classic',
+    'Blackout Drapery - Modern',
+    'Decorative Drapery - Classic',
+    'Decorative Drapery - Modern',
+    'Panel Drapery - Standard',
+    'Panel Drapery - Premium',
+    'Pleated Drapery - Classic',
+    'Pleated Drapery - Modern',
+    'Grommet Drapery - Standard',
+    'Grommet Drapery - Premium',
+    'Tab Top Drapery - Standard',
+    'Tab Top Drapery - Premium',
+    'Other'
+  ]
 };
 
 const MATERIALS = {
-  blinds: ['Aluminum', 'Wood', 'Faux Wood', 'PVC'],
-  curtains: ['Cotton', 'Linen', 'Silk', 'Polyester', 'Velvet'],
-  shades: ['Polyester', 'Cotton', 'Linen', 'Bamboo', 'Wood'],
-  accessories: ['Metal', 'Wood', 'Plastic', 'Glass']
+  blinds: ['Aluminum', 'Wood', 'Faux Wood', 'PVC', 'Bamboo'],
+  curtains: ['Cotton', 'Linen', 'Silk', 'Polyester', 'Velvet', 'Sheer'],
+  shades: ['Polyester', 'Cotton', 'Linen', 'Bamboo', 'Wood', 'Synthetic'],
+  drapery: ['Cotton', 'Linen', 'Silk', 'Velvet', 'Polyester', 'Sheer', 'Blackout']
 };
 
 const COLORS = [
@@ -368,7 +441,8 @@ const QuoteRequest: React.FC = () => {
     preferred_color: '',
     preferred_material: '',
     installation_required: 'no',
-    location: null
+    location: null,
+    custom_product_model: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [toast, setToast] = useState<{ message: string; type: 'success' | 'error' } | null>(null);
@@ -445,7 +519,8 @@ const QuoteRequest: React.FC = () => {
         preferred_color: '',
         preferred_material: '',
         installation_required: 'no',
-        location: null
+        location: null,
+        custom_product_model: ''
       });
 
     } catch (error) {
@@ -479,8 +554,7 @@ const QuoteRequest: React.FC = () => {
         <SectionHeader>
           <SectionTitle>Request a Quote</SectionTitle>
           <SectionDescription>
-            Fill out the form below to request a quote for your window treatment needs.
-            Our team will get back to you shortly with a detailed estimate.
+            Fill out the form below to receive a personalized quote for your window treatment needs.
           </SectionDescription>
         </SectionHeader>
 
@@ -490,35 +564,24 @@ const QuoteRequest: React.FC = () => {
             <ContactInfoList>
               <ContactInfoItem>
                 <IconWrapper>
-                  <MapPin size={20} />
-                </IconWrapper>
-                <ContactInfoContent>
-                  <ContactInfoLabel>Address</ContactInfoLabel>
-                  <ContactInfoText>
-                    123 Design Street<br />
-                    Suite 456<br />
-                    New York, NY 10001
-                  </ContactInfoText>
-                </ContactInfoContent>
-              </ContactInfoItem>
-              <ContactInfoItem>
-                <IconWrapper>
                   <Phone size={20} />
                 </IconWrapper>
                 <ContactInfoContent>
                   <ContactInfoLabel>Phone</ContactInfoLabel>
-                  <ContactInfoText>(555) 123-4567</ContactInfoText>
+                  <ContactInfoText>(310) 467-5772</ContactInfoText>
                 </ContactInfoContent>
               </ContactInfoItem>
+
               <ContactInfoItem>
                 <IconWrapper>
                   <Mail size={20} />
                 </IconWrapper>
                 <ContactInfoContent>
                   <ContactInfoLabel>Email</ContactInfoLabel>
-                  <ContactInfoText>info@lunadrapes.com</ContactInfoText>
+                  <ContactInfoText>LunaDrapes@gmail.com</ContactInfoText>
                 </ContactInfoContent>
               </ContactInfoItem>
+
               <ContactInfoItem>
                 <IconWrapper>
                   <Clock size={20} />
@@ -526,9 +589,8 @@ const QuoteRequest: React.FC = () => {
                 <ContactInfoContent>
                   <ContactInfoLabel>Business Hours</ContactInfoLabel>
                   <ContactInfoText>
-                    Monday - Friday: 9:00 AM - 6:00 PM<br />
-                    Saturday: 10:00 AM - 4:00 PM<br />
-                    Sunday: Closed
+                    Monday - Friday: 9am - 5pm EST<br />
+                    Saturday - Sunday: Closed
                   </ContactInfoText>
                 </ContactInfoContent>
               </ContactInfoItem>
@@ -584,7 +646,7 @@ const QuoteRequest: React.FC = () => {
                   <option value="blinds">Blinds</option>
                   <option value="curtains">Curtains</option>
                   <option value="shades">Shades</option>
-                  <option value="accessories">Accessories</option>
+                  <option value="drapery">Drapery</option>
                 </Select>
               </FormGroup>
               <FormGroup>
@@ -595,13 +657,23 @@ const QuoteRequest: React.FC = () => {
                   value={formData.product_model}
                   onChange={handleChange}
                   required
-                  disabled={!formData.product_type}
                 >
                   <option value="">Select a model</option>
                   {formData.product_type && PRODUCT_CATEGORIES[formData.product_type as keyof typeof PRODUCT_CATEGORIES].map(model => (
                     <option key={model} value={model}>{model}</option>
                   ))}
                 </Select>
+                {formData.product_model === 'Other' && (
+                  <Input
+                    type="text"
+                    name="custom_product_model"
+                    placeholder="Please specify your product model"
+                    value={formData.custom_product_model || ''}
+                    onChange={handleChange}
+                    required
+                    style={{ marginTop: '0.5rem' }}
+                  />
+                )}
               </FormGroup>
               <FormGroup>
                 <Label htmlFor="quantity">Quantity *</Label>
@@ -616,7 +688,7 @@ const QuoteRequest: React.FC = () => {
                 />
               </FormGroup>
               <FormGroup>
-                <Label htmlFor="window_dimensions">Window Dimensions *</Label>
+                <Label htmlFor="window_dimensions">Window Dimensions (Optional)</Label>
                 <Input
                   type="text"
                   id="window_dimensions"
@@ -624,7 +696,6 @@ const QuoteRequest: React.FC = () => {
                   value={formData.window_dimensions}
                   onChange={handleChange}
                   placeholder="e.g., 36 inches x 48 inches"
-                  required
                 />
               </FormGroup>
               <FormGroup>

@@ -330,57 +330,108 @@ const SubmitButton = styled.button<{ isSubmitting: boolean }>`
   }
 `;
 
-// Toast notification component
-const Toast: React.FC<{
-  message: string;
-  type: 'success' | 'error';
-  onClose: () => void;
-}> = ({ message, type, onClose }) => {
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      onClose();
-    }, 5000);
+// Add modern Toast component styles
+const ToastContainer = styled.div<{ type: 'success' | 'error' }>`
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  padding: 16px 20px;
+  border-radius: 8px;
+  background: white;
+  color: #1a1a1a;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 300px;
+  max-width: 400px;
+  border-left: 4px solid ${props => props.type === 'success' ? '#4CAF50' : '#f44336'};
+  animation: slideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-origin: top right;
+  position: relative;
+  overflow: hidden;
 
-    return () => clearTimeout(timer);
-  }, [onClose]);
+  @keyframes slideIn {
+    0% {
+      transform: translateX(100%) scale(0.95);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0) scale(1);
+      opacity: 1;
+    }
+  }
 
-  return (
-    <div className={`fixed top-4 right-4 z-50 transform transition-all duration-300 ease-in-out ${
-      type === 'success' ? 'bg-green-50 border-green-500' : 'bg-red-50 border-red-500'
-    } border-l-4 p-4 rounded-lg shadow-lg max-w-md`}>
-      <div className="flex items-start">
-        <div className="flex-shrink-0">
-          {type === 'success' ? (
-            <svg className="h-6 w-6 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-            </svg>
-          ) : (
-            <svg className="h-6 w-6 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          )}
-        </div>
-        <div className="ml-3">
-          <p className={`text-sm font-medium ${
-            type === 'success' ? 'text-green-800' : 'text-red-800'
-          }`}>
-            {message}
-          </p>
-        </div>
-        <div className="ml-auto pl-3">
-          <button
-            onClick={onClose}
-            className={`inline-flex rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 ${
-              type === 'success' ? 'text-green-500 hover:text-green-600' : 'text-red-500 hover:text-red-600'
-            }`}
-          >
-            <X className="h-5 w-5" />
-          </button>
-        </div>
-      </div>
-    </div>
-  );
-};
+  @keyframes slideOut {
+    0% {
+      transform: translateX(0) scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(100%) scale(0.95);
+      opacity: 0;
+    }
+  }
+
+  &.exiting {
+    animation: slideOut 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+`;
+
+const ToastProgressBar = styled.div<{ type: 'success' | 'error' }>`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  background: ${props => props.type === 'success' ? '#4CAF50' : '#f44336'};
+  animation: progress 5s linear forwards;
+
+  @keyframes progress {
+    from {
+      width: 100%;
+    }
+    to {
+      width: 0%;
+    }
+  }
+`;
+
+const ToastIcon = styled.div<{ type: 'success' | 'error' }>`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: ${props => props.type === 'success' ? '#E8F5E9' : '#FFEBEE'};
+  color: ${props => props.type === 'success' ? '#4CAF50' : '#f44336'};
+  flex-shrink: 0;
+`;
+
+const ToastMessage = styled.div`
+  flex: 1;
+  line-height: 1.5;
+`;
+
+const ToastCloseButton = styled.button`
+  background: none;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  color: #666;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: #1a1a1a;
+  }
+`;
 
 // Map click handler component
 const MapClickHandler: React.FC<{ onLocationSelect: (lat: number, lng: number) => void }> = ({ onLocationSelect }) => {
@@ -396,6 +447,7 @@ const Contact: React.FC = () => {
   const form = useRef<HTMLFormElement>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [toast, setToast] = useState<{ message: string; type: 'success' | 'error' } | null>(null);
+  const [isExiting, setIsExiting] = useState(false);
   const [formData, setFormData] = useState<FormData>({
     user_name: '',
     user_email: '',
@@ -407,6 +459,20 @@ const Contact: React.FC = () => {
   const [searchResults, setSearchResults] = useState<Array<{lat: string; lon: string; display_name: string}>>([]);
   const [location, setLocation] = useState<{lat: number; lng: number; address: string} | null>(null);
   const [mapCenter, setMapCenter] = useState<[number, number]>([34.0522, -118.2437]);
+
+  useEffect(() => {
+    if (toast) {
+      const timer = setTimeout(() => {
+        setIsExiting(true);
+        setTimeout(() => {
+          setToast(null);
+          setIsExiting(false);
+        }, 300);
+      }, 5000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [toast]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -546,68 +612,75 @@ const Contact: React.FC = () => {
   return (
     <ContactSection id="contact">
       {toast && (
-        <Toast
-          message={toast.message}
-          type={toast.type}
-          onClose={() => setToast(null)}
-        />
+        <ToastContainer type={toast.type} className={isExiting ? 'exiting' : ''}>
+          <ToastProgressBar type={toast.type} />
+          <ToastIcon type={toast.type}>
+            {toast.type === 'success' ? (
+              <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8 15L3 10L4.41 8.59L8 12.17L15.59 4.58L17 6L8 15Z" fill="currentColor"/>
+              </svg>
+            ) : (
+              <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 18C14.4183 18 18 14.4183 18 10C18 5.58172 14.4183 2 10 2C5.58172 2 2 5.58172 2 10C2 14.4183 5.58172 18 10 18ZM10 16C13.3137 16 16 13.3137 16 10C16 6.68629 13.3137 4 10 4C6.68629 4 4 6.68629 4 10C4 13.3137 6.68629 16 10 16ZM10 8C10.5523 8 11 8.44772 11 9V11C11 11.5523 10.5523 12 10 12C9.44772 12 9 11.5523 9 11V9C9 8.44772 9.44772 8 10 8ZM10 14C10.5523 14 11 13.5523 11 13C11 12.4477 10.5523 12 10 12C9.44772 12 9 12.4477 9 13C9 13.5523 9.44772 14 10 14Z" fill="currentColor"/>
+              </svg>
+            )}
+          </ToastIcon>
+          <ToastMessage>{toast.message}</ToastMessage>
+          <ToastCloseButton onClick={() => {
+            setIsExiting(true);
+            setTimeout(() => {
+              setToast(null);
+              setIsExiting(false);
+            }, 300);
+          }}>
+            <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M15 5L5 15M5 5L15 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </ToastCloseButton>
+        </ToastContainer>
       )}
       <Container>
         <SectionHeader>
           <SectionTitle>Contact Us</SectionTitle>
           <SectionDivider />
           <SectionDescription>
-            Have questions or ready to transform your space? Reach out to our team for personalized assistance.
+            Get in touch with us for any questions about our products or services.
           </SectionDescription>
         </SectionHeader>
 
         <Grid>
           <ContactInfo>
-            <ContactInfoTitle>Get In Touch</ContactInfoTitle>
+            <ContactInfoTitle>Contact Information</ContactInfoTitle>
             <ContactInfoList>
               <ContactInfoItem>
                 <IconWrapper>
-                  <MapPin className="h-6 w-6" />
+                  <Phone size={20} />
                 </IconWrapper>
                 <ContactInfoContent>
-                  <ContactInfoLabel>Our Location</ContactInfoLabel>
+                  <ContactInfoLabel>Phone</ContactInfoLabel>
+                  <ContactInfoText>(310) 467-5772</ContactInfoText>
+                </ContactInfoContent>
+              </ContactInfoItem>
+
+              <ContactInfoItem>
+                <IconWrapper>
+                  <Mail size={20} />
+                </IconWrapper>
+                <ContactInfoContent>
+                  <ContactInfoLabel>Email</ContactInfoLabel>
+                  <ContactInfoText>LunaDrapes@gmail.com</ContactInfoText>
+                </ContactInfoContent>
+              </ContactInfoItem>
+
+              <ContactInfoItem>
+                <IconWrapper>
+                  <Clock size={20} />
+                </IconWrapper>
+                <ContactInfoContent>
+                  <ContactInfoLabel>Business Hours</ContactInfoLabel>
                   <ContactInfoText>
-                    123 Elegance Avenue, Suite 456<br />
-                    Los Angeles, CA 90001
-                  </ContactInfoText>
-                </ContactInfoContent>
-              </ContactInfoItem>
-                
-              <ContactInfoItem>
-                <IconWrapper>
-                  <Phone className="h-6 w-6" />
-                </IconWrapper>
-                <ContactInfoContent>
-                  <ContactInfoLabel>Phone Number</ContactInfoLabel>
-                  <ContactInfoText>(123) 456-7890</ContactInfoText>
-                </ContactInfoContent>
-              </ContactInfoItem>
-                
-              <ContactInfoItem>
-                <IconWrapper>
-                  <Mail className="h-6 w-6" />
-                </IconWrapper>
-                <ContactInfoContent>
-                  <ContactInfoLabel>Email Address</ContactInfoLabel>
-                  <ContactInfoText>info@lunadrapes.com</ContactInfoText>
-                </ContactInfoContent>
-              </ContactInfoItem>
-                
-              <ContactInfoItem>
-                <IconWrapper>
-                  <Clock className="h-6 w-6" />
-                </IconWrapper>
-                <ContactInfoContent>
-                  <ContactInfoLabel>Opening Hours</ContactInfoLabel>
-                  <ContactInfoText>
-                      Monday - Friday: 9am - 6pm<br />
-                      Saturday: 10am - 4pm<br />
-                      Sunday: Closed
+                    Monday - Friday: 9am - 5pm EST<br />
+                    Saturday - Sunday: Closed
                   </ContactInfoText>
                 </ContactInfoContent>
               </ContactInfoItem>

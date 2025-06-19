@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import rollerShade from '../assets/photo_2025-06-01_20-53-17.jpg';
-import romanShade from '../assets/photo_2025-06-01_20-53-12.jpg';
-import cellularShade from '../assets/kimberley-alpuerto-gYCj5LrI9wI-unsplash.jpg';
+import rollerShade from '../assets/Home-Shade.jpg';
+import romanShade from '../assets/Home-blinds.jpg';
+import cellularShade from '../assets/Home-Drapery.jpg';
 import motorizedShade from '../assets/photo_2025-06-01_20-53-26.jpg';
 
 const ProductsSection = styled.section`
@@ -70,11 +70,6 @@ const ProductCard = styled.div`
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
-  
-  &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
-  }
 `;
 
 const ProductImage = styled.img`
@@ -83,29 +78,20 @@ const ProductImage = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s ease;
-  
-  ${ProductCard}:hover & {
-    transform: scale(1.1);
-  }
+  z-index: 1;
 `;
 
 const ProductOverlay = styled.div`
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0);
-  transition: background 0.3s ease;
+  background: rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 2rem;
-  opacity: 0;
-  
-  ${ProductCard}:hover & {
-    background: rgba(0, 0, 0, 0.7);
-    opacity: 1;
-  }
+  opacity: 1;
+  z-index: 2;
 `;
 
 const ProductTitle = styled.h3`
