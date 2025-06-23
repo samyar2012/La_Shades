@@ -3,9 +3,9 @@ import { ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import thermalDraperyImage from '../../../assets/photo_2025-06-01_21-26-02.jpg';
-import modernThermalImage from '../../../assets/photo_2025-06-01_21-26-02 (2).jpg';
-import premiumThermalImage from '../../../assets/photo_2025-06-01_21-26-01.jpg';
+import thermalDraperyImage from '../../../assets/11.jpg';
+import modernThermalImage from '../../../assets/12.jpg';
+import premiumThermalImage from '../../../assets/13.jpg';
 
 const PageContainer = styled(motion.div)`
   min-height: 100vh;

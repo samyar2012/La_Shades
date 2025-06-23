@@ -3,7 +3,10 @@ import { ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import curtainsImage from '../../../assets/photo_2025-06-01_20-53-26.jpg';
+import curtainsImage from '../../../assets/blackout3.jpg';
+import classicBlackoutImage from '../../../assets/Blackout2.jpg';
+import thermalBlackoutImage from '../../../assets/0022.jpg';
+import decorativeBlackoutImage from '../../../assets/09.jpg';
 
 const PageContainer = styled(motion.div)`
   min-height: 100vh;
@@ -306,19 +309,19 @@ const BlackoutCurtains: React.FC = () => {
     {
       name: 'Classic Blackout',
       description: 'Timeless blackout curtains with a clean, modern look for any room.',
-      image: curtainsImage,
+      image: classicBlackoutImage,
       link: '/contact'
     },
     {
       name: 'Thermal Blackout',
       description: 'Advanced thermal insulation for maximum temperature control and energy savings.',
-      image: curtainsImage,
+      image: thermalBlackoutImage,
       link: '/contact'
     },
     {
       name: 'Decorative Blackout',
       description: 'Stylish blackout curtains with decorative patterns and textures.',
-      image: curtainsImage,
+      image: decorativeBlackoutImage,
       link: '/contact'
     }
   ];

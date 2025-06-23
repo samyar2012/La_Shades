@@ -2,11 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import sheerCurtain from '../../assets/photo_2025-06-01_21-25-55.jpg';
-import blackoutCurtain from '../../assets/photo_2025-06-01_21-25-57.jpg';
-import thermalCurtain from '../../assets/photo_2025-06-01_21-26-00.jpg';
-import decorativeCurtain from '../../assets/photo_2025-06-01_20-53-26.jpg';
-import heroImage from '../../assets/kimberley-alpuerto-gYCj5LrI9wI-unsplash.jpg';
+import sheerCurtain from '../../assets/1.jpg';
+import blackoutCurtain from '../../assets/blackout3.jpg';
+import thermalCurtain from '../../assets/11.jpg';
+import decorativeCurtain from '../../assets/03.jpg';
+import heroImage from '../../assets/Home-Drapery.jpg';
 
 const PageContainer = styled(motion.div)`
   min-height: 100vh;

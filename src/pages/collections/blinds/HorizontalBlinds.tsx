@@ -3,9 +3,9 @@ import { ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import venetianBlinds from '../../../assets/photo_2025-06-01_20-53-29.jpg';
-import aluminumBlinds from '../../../assets/photo_2025-06-01_20-53-26.jpg';
-import woodBlinds from '../../../assets/photo_2025-06-01_20-53-17.jpg';
+import venetianBlinds from '../../../assets/blinds2.jpg';
+import aluminumBlinds from '../../../assets/blinds4.jpg';
+import woodBlinds from '../../../assets/blinds5.jpg';
 
 const PageContainer = styled(motion.div)`
   min-height: 100vh;

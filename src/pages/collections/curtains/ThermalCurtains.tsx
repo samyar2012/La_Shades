@@ -3,7 +3,10 @@ import { ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import curtainsImage from '../../../assets/photo_2025-06-01_20-53-26.jpg';
+import curtainsImage from '../../../assets/11.jpg';
+import classicThermalImage from '../../../assets/12.jpg';
+import modernThermalImage from '../../../assets/13.jpg';
+import luxuryThermalImage from '../../../assets/14.jpg';
 
 const PageContainer = styled(motion.div)`
   min-height: 100vh;
@@ -306,19 +309,19 @@ const ThermalCurtains: React.FC = () => {
     {
       name: 'Classic Thermal',
       description: 'Traditional designs with superior insulation properties and elegant styling.',
-      image: curtainsImage,
+      image: classicThermalImage,
       link: '/contact'
     },
     {
       name: 'Modern Thermal',
       description: 'Contemporary styles with clean lines and advanced thermal technology.',
-      image: curtainsImage,
+      image: modernThermalImage,
       link: '/contact'
     },
     {
       name: 'Luxury Thermal',
       description: 'Premium designs combining thermal efficiency with sophisticated aesthetics.',
-      image: curtainsImage,
+      image: luxuryThermalImage,
       link: '/contact'
     }
   ];

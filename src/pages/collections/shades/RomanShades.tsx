@@ -3,9 +3,9 @@ import { ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import romanShadesImage from '../../../assets/photo_2025-06-01_20-53-12.jpg';
-import flatRomanImage from '../../../assets/mitchell-luo--_HeBmTRRmg-unsplash.jpg';
-import hobbledRomanImage from '../../../assets/anais-murith-u2kV8mqvdtc-unsplash.jpg';
+import romanShadesImage from '../../../assets/Classic_Roman.png';
+import flatRomanImage from '../../../assets/Modern_Roman.png';
+import hobbledRomanImage from '../../../assets/P_Roman.png';
 
 const PageContainer = styled(motion.div)`
   min-height: 100vh;
@@ -267,6 +267,26 @@ const CTALink = styled(motion(Link))`
   }
 `;
 
+const HeroButton = styled(motion(Link))`
+  font-family: 'Montserrat', sans-serif;
+  background-color: transparent;
+  border: 2px solid white;
+  color: white;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-decoration: none;
+  margin-top: 1rem;
+  
+  &:hover {
+    background-color: white;
+    color: black;
+  }
+`;
+
 const RomanShades: React.FC = () => {
   const features = [
     {
@@ -415,14 +435,14 @@ const RomanShades: React.FC = () => {
             Elevate your windows with the timeless elegance of Roman shades. 
             From classic folds to modern flat designs, discover the perfect blend of style and functionality.
           </Description>
-          <RequestQuoteButton
+          <HeroButton
             to="/quote-request?type=shades&model=Roman Shades"
             variants={descriptionVariants}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
             Request a Quote
-          </RequestQuoteButton>
+          </HeroButton>
         </Container>
       </Header>
 

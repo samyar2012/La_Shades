@@ -3,9 +3,9 @@ import { ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import classicRoller from '../../../assets/photo_2025-06-01_20-53-29.jpg';
-import solarRoller from '../../../assets/photo_2025-06-01_20-53-26.jpg';
-import blackoutRoller from '../../../assets/photo_2025-06-01_20-53-17.jpg';
+import classicRoller from '../../../assets/Classic_Roller.png';
+import solarRoller from '../../../assets/Solar_Roller.png';
+import blackoutRoller from '../../../assets/Blackout_Roller.png';
 
 const PageContainer = styled(motion.div)`
   min-height: 100vh;

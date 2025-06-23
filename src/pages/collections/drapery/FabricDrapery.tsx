@@ -3,9 +3,9 @@ import { ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import fabricDraperyImage from '../../../assets/photo_2025-06-01_21-25-59.jpg';
-import classicFabricImage from '../../../assets/photo_2025-06-01_21-26-00.jpg';
-import modernFabricImage from '../../../assets/photo_2025-06-01_21-26-01.jpg';
+import fabricDraperyImage from '../../../assets/Home-Drapery.jpg';
+import classicFabricImage from '../../../assets/05.jpg';
+import modernFabricImage from '../../../assets/06.jpg';
 
 const PageContainer = styled(motion.div)`
   min-height: 100vh;

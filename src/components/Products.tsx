@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import rollerShade from '../assets/Home-Shade.jpg';
 import romanShade from '../assets/Home-blinds.jpg';
 import cellularShade from '../assets/Home-Drapery.jpg';
-import motorizedShade from '../assets/photo_2025-06-01_20-53-26.jpg';
+import motorizedShade from '../assets/motorized-shades.jpg';
 
 const ProductsSection = styled.section`
   padding: 5rem 2rem;
@@ -68,7 +68,7 @@ const ProductCard = styled.div`
   height: 400px;
   overflow: hidden;
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.07);
   transition: all 0.3s ease;
 `;
 
@@ -84,7 +84,7 @@ const ProductImage = styled.img`
 const ProductOverlay = styled.div`
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.4);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -100,6 +100,7 @@ const ProductTitle = styled.h3`
   color: white;
   margin-bottom: 1rem;
   text-align: center;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.15);
 `;
 
 const ProductDescription = styled.p`
@@ -109,6 +110,7 @@ const ProductDescription = styled.p`
   margin-bottom: 1.5rem;
   line-height: 1.6;
   font-weight: 300;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.10);
 `;
 
 const ProductLink = styled(Link)`
@@ -180,10 +182,10 @@ const Products: React.FC = () => {
     },
     {
       id: 4,
-      title: 'Motorized Shades',
+      title: 'Motorized',
       description: 'Smart window treatments that offer convenience and modern living solutions.',
       image: motorizedShade,
-      link: '/collections/shades/motorized'
+      link: '/collections/motorized'
     }
   ];
 

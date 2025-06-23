@@ -2,11 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import verticalBlind from '../../assets/photo_2025-06-01_21-25-55.jpg';
-import horizontalBlind from '../../assets/photo_2025-06-01_21-25-57.jpg';
-import miniBlind from '../../assets/photo_2025-06-01_21-26-00.jpg';
-import panelBlind from '../../assets/photo_2025-06-01_20-53-26.jpg';
+import verticalBlind from '../../assets/blinds6.jpg';
+import horizontalBlind from '../../assets/blinds2.jpg';
+import miniBlind from '../../assets/Mini_blinds.jpg';
+import panelBlind from '../../assets/Blinds4.jpg';
 import heroImage from '../../assets/wade-lambert-LRr2VIwWgC0-unsplash.jpg';
+
 
 const PageContainer = styled(motion.div)`
   min-height: 100vh;

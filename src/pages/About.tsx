@@ -3,9 +3,9 @@ import { Star, Users, Award, Heart, CheckCircle2, ShieldCheck, TrendingUp } from
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import styled from 'styled-components';
-import aboutImage1 from '../assets/photo_2025-06-01_21-25-55.jpg';
-import aboutImage2 from '../assets/photo_2025-06-01_21-25-57.jpg';
-import aboutImage3 from '../assets/photo_2025-06-01_21-26-00.jpg';
+import aboutImage1 from '../assets/Quality_Craftsmanship.jpg';
+import aboutImage2 from '../assets/Customer_Satisfaction.jpg';
+import aboutImage3 from '../assets/Innovation.jpg';
 import heroImage from '../assets/anais-murith-u2kV8mqvdtc-unsplash.jpg';
 
 const PageContainer = styled.div`

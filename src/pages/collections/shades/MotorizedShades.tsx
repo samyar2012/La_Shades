@@ -3,9 +3,9 @@ import { ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import motorizedRoman from '../../../assets/photo_2025-06-01_20-53-12.jpg';
-import motorizedCellular from '../../../assets/kimberley-alpuerto-gYCj5LrI9wI-unsplash.jpg';
-import motorizedRoller from '../../../assets/moon-i87dB4Kd7nw-unsplash.jpg';
+import motorizedRoman from '../../../assets/classic_Motorized.png';
+import motorizedCellular from '../../../assets/Modern_Motorized.png';
+import motorizedRoller from '../../../assets/Premium_motorized.png';
 
 const PageContainer = styled(motion.div)`
   min-height: 100vh;
@@ -230,6 +230,26 @@ const RequestQuoteButton = styled(motion(Link))`
   }
 `;
 
+const HeroButton = styled(motion(Link))`
+  font-family: 'Montserrat', sans-serif;
+  background-color: transparent;
+  border: 2px solid white;
+  color: white;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-decoration: none;
+  margin-top: 1rem;
+  
+  &:hover {
+    background-color: white;
+    color: black;
+  }
+`;
+
 const CTASection = styled(motion.div)`
   text-align: center;
   margin: 8rem auto;
@@ -422,14 +442,14 @@ const MotorizedShades: React.FC = () => {
             Experience the perfect blend of luxury and convenience with our motorized shades. 
             Control your window treatments with the touch of a button or through your smart home system.
           </Description>
-          <RequestQuoteButton
+          <HeroButton
             to="/quote-request?type=shades&model=Motorized Shades"
             variants={descriptionVariants}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
             Request a Quote
-          </RequestQuoteButton>
+          </HeroButton>
         </Container>
       </Header>
 

@@ -1,18 +1,20 @@
 import React from 'react';
+import { ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import rod from '../../assets/photo_2025-06-01_21-25-55.jpg';
-import finial from '../../assets/photo_2025-06-01_21-25-57.jpg';
-import bracket from '../../assets/photo_2025-06-01_21-26-00.jpg';
-import tieback from '../../assets/photo_2025-06-01_20-53-26.jpg';
-import heroImage from '../../assets/photo_2025-06-01_20-53-17.jpg';
+import { motion } from 'framer-motion';
+import AccessoriesImg from '../../assets/Acsessori_img (2).jpg';
+import AccessoriesImg2 from '../../assets/Acsessori_img (3).jpg';
+import AccessoriesImg3 from '../../assets/Acsessori_img (5).jpg';
+import AccessoriesImg4 from '../../assets/Acsessori_img.jpg';
+import heroImage from '../../assets/Acsessori_img_Hero.jpg';
 
-const PageContainer = styled.div`
+const PageContainer = styled(motion.div)`
   min-height: 100vh;
   background: linear-gradient(rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.02));
 `;
 
-const Header = styled.div`
+const Header = styled(motion.div)`
   position: relative;
   min-height: 100vh;
   width: 100%;
@@ -27,7 +29,7 @@ const Header = styled.div`
   margin: 0;
 `;
 
-const Container = styled.div`
+const Container = styled(motion.div)`
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1rem;
@@ -41,7 +43,22 @@ const Container = styled.div`
   }
 `;
 
-const Title = styled.h1`
+const BackLink = styled(motion(Link))`
+  display: inline-flex;
+  align-items: center;
+  color: white;
+  margin-bottom: 1rem;
+  transition: all 0.3s ease;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.875rem;
+  
+  &:hover {
+    color: rgba(255, 255, 255, 0.8);
+    transform: translateX(-5px);
+  }
+`;
+
+const Title = styled(motion.h1)`
   font-family: 'Playfair Display', serif;
   font-size: 4rem;
   margin-bottom: 1.5rem;
@@ -55,7 +72,7 @@ const Title = styled.h1`
   }
 `;
 
-const Description = styled.p`
+const Description = styled(motion.p)`
   font-family: 'Montserrat', sans-serif;
   font-size: 1.25rem;
   margin-bottom: 2rem;
@@ -68,7 +85,7 @@ const Description = styled.p`
   }
 `;
 
-const CollectionsGrid = styled.div`
+const FeaturesGrid = styled(motion.div)`
   display: grid;
   grid-template-columns: 1fr;
   gap: 2rem;
@@ -77,17 +94,19 @@ const CollectionsGrid = styled.div`
   @media (min-width: 768px) {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
 `;
 
-const CollectionCard = styled(Link)`
-  position: relative;
-  height: 400px;
+const FeatureCard = styled(motion.div)`
+  background: white;
+  padding: 2rem;
   border-radius: 0.5rem;
-  overflow: hidden;
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
   transition: all 0.3s ease;
   border: 1px solid rgba(0, 0, 0, 0.1);
-  background: white;
 
   &:hover {
     transform: translateY(-4px);
@@ -95,38 +114,124 @@ const CollectionCard = styled(Link)`
   }
 `;
 
-const CollectionImage = styled.img`
-  width: 100%;
-  height: 60%;
-  object-fit: cover;
-  transition: transform 0.3s ease;
-
-  ${CollectionCard}:hover & {
-    transform: scale(1.05);
-  }
-`;
-
-const CollectionContent = styled.div`
-  padding: 1.5rem;
-  color: #000;
-`;
-
-const CollectionTitle = styled.h2`
+const FeatureTitle = styled.h3`
   font-family: 'Playfair Display', serif;
   font-size: 1.75rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
   color: #000;
   font-weight: normal;
 `;
 
-const CollectionDescription = styled.p`
+const FeatureDescription = styled.p`
   font-family: 'Montserrat', sans-serif;
   font-size: 1rem;
   color: #333;
   line-height: 1.5;
 `;
 
-const CTASection = styled.div`
+const AccessoriesSection = styled(motion.div)`
+  margin: 4rem 0;
+`;
+
+const AccessoriesTitle = styled.h2`
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  color: #000;
+  margin-bottom: 2rem;
+  text-align: center;
+  font-weight: normal;
+`;
+
+const AccessoriesGrid = styled(motion.div)`
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  margin-top: 3rem;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+`;
+
+const AccessoryCard = styled(motion.div)`
+  background: white;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 25px 30px -5px rgba(0, 0, 0, 0.15), 0 15px 15px -5px rgba(0, 0, 0, 0.08);
+  }
+`;
+
+const AccessoryImage = styled.img`
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  transition: all 0.3s ease;
+
+  ${AccessoryCard}:hover & {
+    transform: scale(1.05);
+  }
+`;
+
+const AccessoryContent = styled.div`
+  padding: 2rem;
+`;
+
+const AccessoryName = styled.h3`
+  font-family: 'Playfair Display', serif;
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+  color: #000;
+  font-weight: normal;
+`;
+
+const AccessoryDescription = styled.p`
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+`;
+
+const RequestQuoteButton = styled(motion(Link))`
+  font-family: 'Montserrat', sans-serif;
+  display: inline-block;
+  color: #000;
+  text-decoration: none;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    bottom: -2px;
+    left: 0;
+    background-color: #000;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+  }
+  
+  &:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+`;
+
+const CTASection = styled(motion.div)`
   text-align: center;
   margin: 8rem auto;
   max-width: 800px;
@@ -151,7 +256,7 @@ const CTADescription = styled.p`
   margin-right: auto;
 `;
 
-const CTALink = styled(Link)`
+const CTALink = styled(motion(Link))`
   font-family: 'Montserrat', sans-serif;
   background-color: transparent;
   border: 2px solid #000;
@@ -170,64 +275,211 @@ const CTALink = styled(Link)`
 `;
 
 const Accessories: React.FC = () => {
-  const collections = [
+  const features = [
     {
-      name: 'Curtain Rods',
-      description: 'Elegant curtain rods that provide the perfect foundation for your window treatments. Available in various styles and finishes.',
-      image: rod,
-      path: '/collections/accessories/curtain-rods'
+      title: 'Premium Quality',
+      description: 'All our accessories are crafted from the finest materials, ensuring durability and lasting beauty for your window treatments.'
     },
     {
-      name: 'Finials',
-      description: 'Decorative finials that add the perfect finishing touch to your curtain rods. Choose from a variety of designs and materials.',
-      image: finial,
-      path: '/collections/accessories/finials'
+      title: 'Versatile Design',
+      description: 'Our accessories complement any interior style, from classic to contemporary, providing the perfect finishing touch.'
     },
     {
-      name: 'Valances',
-      description: 'Add the perfect finishing touch to your windows with our collection of premium valances. Our valances combine functionality with elegant design.',
-      image: bracket,
-      path: '/collections/accessories/valances'
+      title: 'Easy Installation',
+      description: 'Designed for simple installation, our accessories come with all necessary hardware and detailed instructions.'
     },
     {
-      name: 'Tiebacks',
-      description: 'Beautiful tiebacks that hold your curtains in place while adding a decorative element. Perfect for creating elegant window displays.',
-      image: tieback,
-      path: '/collections/accessories/tiebacks'
+      title: 'Custom Options',
+      description: 'Available in various finishes, sizes, and styles to perfectly match your existing décor and window treatments.'
+    },
+    {
+      title: 'Professional Finish',
+      description: 'Add a polished, professional look to your windows with our carefully selected collection of accessories.'
+    },
+    {
+      title: 'Long-lasting Beauty',
+      description: 'Built to withstand daily use while maintaining their elegant appearance for years to come.'
     }
   ];
 
+  const accessories = [
+    {
+      name: 'Curtain Rods',
+      description: 'Elegant curtain rods that provide the perfect foundation for your window treatments. Available in various styles and finishes including classic, modern, and decorative designs. Our rods are crafted from premium materials and come in multiple diameters to accommodate different curtain weights.',
+      image: AccessoriesImg
+    },
+    {
+      name: 'Finials',
+      description: 'Decorative finials that add the perfect finishing touch to your curtain rods. Choose from a variety of designs including classic, contemporary, and ornate styles. Available in materials like brass, nickel, bronze, and wood to complement any décor.',
+      image: AccessoriesImg2
+    },
+    {
+      name: 'Valances',
+      description: 'Add the perfect finishing touch to your windows with our collection of premium valances. Our valances combine functionality with elegant design, helping to conceal hardware while adding visual interest. Available in various styles and fabrics.',
+      image: AccessoriesImg3
+    },
+    {
+      name: 'Tiebacks',
+      description: 'Beautiful tiebacks that hold your curtains in place while adding a decorative element. Perfect for creating elegant window displays and allowing natural light to flow into your space. Available in fabric, metal, and decorative designs.',
+      image: AccessoriesImg4
+    }
+  ];
+
+  const pageVariants = {
+    initial: { opacity: 0 },
+    animate: { opacity: 1 },
+    exit: { opacity: 0 }
+  };
+
+  const headerVariants = {
+    initial: { opacity: 0, y: 20 },
+    animate: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.8 }
+    }
+  };
+
+  const titleVariants = {
+    initial: { opacity: 0, y: 20 },
+    animate: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.8, delay: 0.2 }
+    }
+  };
+
+  const descriptionVariants = {
+    initial: { opacity: 0, y: 20 },
+    animate: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.8, delay: 0.4 }
+    }
+  };
+
+  const gridVariants = {
+    initial: { opacity: 0 },
+    animate: { 
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2
+      }
+    }
+  };
+
+  const cardVariants = {
+    initial: { opacity: 0, y: 20 },
+    animate: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.6 }
+    }
+  };
+
+  const accessoriesVariants = {
+    initial: { opacity: 0 },
+    animate: { 
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2
+      }
+    }
+  };
+
+  const accessoryCardVariants = {
+    initial: { opacity: 0, y: 20 },
+    animate: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.6 }
+    }
+  };
+
+  const ctaVariants = {
+    initial: { opacity: 0, y: 20 },
+    animate: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.8, delay: 0.6 }
+    }
+  };
+
   return (
-    <PageContainer>
-      <Header>
+    <PageContainer
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      variants={pageVariants}
+    >
+      <Header variants={headerVariants}>
         <Container>
-          <Title>Our Accessories Collection</Title>
-          <Description>
-            Discover our premium collection of window treatment accessories, designed to enhance your space with style and functionality.
+          <BackLink 
+            to="/collections"
+            whileHover={{ x: -5 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <ArrowLeft className="h-5 w-5 mr-2" />
+            Back to Collections
+          </BackLink>
+          <Title variants={titleVariants}>Window Treatment Accessories</Title>
+          <Description variants={descriptionVariants}>
+            Complete your window treatments with our premium collection of accessories. From elegant curtain rods to decorative finials, find everything you need to create the perfect finishing touch.
           </Description>
         </Container>
       </Header>
 
       <Container>
-        <CollectionsGrid>
-          {collections.map((collection) => (
-            <CollectionCard key={collection.name} to={collection.path}>
-              <CollectionImage src={collection.image} alt={collection.name} />
-              <CollectionContent>
-                <CollectionTitle>{collection.name}</CollectionTitle>
-                <CollectionDescription>{collection.description}</CollectionDescription>
-              </CollectionContent>
-            </CollectionCard>
-                  ))}
-        </CollectionsGrid>
+        <FeaturesGrid variants={gridVariants}>
+          {features.map((feature) => (
+            <FeatureCard
+              key={feature.title}
+              variants={cardVariants}
+              whileHover={{ y: -10 }}
+            >
+              <FeatureTitle>{feature.title}</FeatureTitle>
+              <FeatureDescription>{feature.description}</FeatureDescription>
+            </FeatureCard>
+          ))}
+        </FeaturesGrid>
 
-        <CTASection>
-          <CTATitle>Ready to Transform Your Windows?</CTATitle>
+        <AccessoriesSection variants={accessoriesVariants}>
+          <AccessoriesTitle>Our Accessories Collection</AccessoriesTitle>
+          <AccessoriesGrid>
+            {accessories.map((accessory) => (
+              <AccessoryCard
+                key={accessory.name}
+                variants={accessoryCardVariants}
+                whileHover={{ y: -10 }}
+              >
+                <AccessoryImage src={accessory.image} alt={accessory.name} />
+                <AccessoryContent>
+                  <AccessoryName>{accessory.name}</AccessoryName>
+                  <AccessoryDescription>{accessory.description}</AccessoryDescription>
+                  <RequestQuoteButton
+                    to={`/quote-request?type=accessories&model=${accessory.name}`}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    Request a Quote
+                  </RequestQuoteButton>
+                </AccessoryContent>
+              </AccessoryCard>
+            ))}
+          </AccessoriesGrid>
+        </AccessoriesSection>
+
+        <CTASection variants={ctaVariants}>
+          <CTATitle>Complete Your Window Treatment</CTATitle>
           <CTADescription>
-            Schedule a free consultation with our design experts and discover the perfect window treatments for your space.
+            Schedule a consultation with our design experts today and discover how our premium accessories can enhance your window treatments.
           </CTADescription>
-          <CTALink to="/contact">
-            Schedule Free Consultation
+          <CTALink 
+            to="/contact"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Schedule Consultation
           </CTALink>
         </CTASection>
       </Container>

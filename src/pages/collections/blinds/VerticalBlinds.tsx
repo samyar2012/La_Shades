@@ -3,9 +3,9 @@ import { ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import verticalBlinds from '../../../assets/photo_2025-06-01_20-53-29.jpg';
-import fabricVertical from '../../../assets/photo_2025-06-01_20-53-26.jpg';
-import vinylVertical from '../../../assets/photo_2025-06-01_20-53-17.jpg';
+import verticalBlinds from '../../../assets/blinds1.jpg';
+import fabricVertical from '../../../assets/blinds2.jpg';
+import vinylVertical from '../../../assets/blinds3.jpg';
 
 const PageContainer = styled(motion.div)`
   min-height: 100vh;

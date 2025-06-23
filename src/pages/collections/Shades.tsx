@@ -2,10 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import rollerShadeImage from '../../assets/photo_2025-06-01_20-53-17.jpg';
-import romanShadeImage from '../../assets/photo_2025-06-01_20-53-12.jpg';
-import cellularShadeImage from '../../assets/kimberley-alpuerto-gYCj5LrI9wI-unsplash.jpg';
-import motorizedShadeImage from '../../assets/photo_2025-06-01_20-53-26.jpg';
+import HeroIMG from '../../assets/Hero_Shade.png'
+import rollerShadeImage from '../../assets/Classic_Roller.png';
+import romanShadeImage from '../../assets/Modern_Roman.png';
+import cellularShadeImage from '../../assets/Modern_celluar.png';
+import motorizedShadeImage from '../../assets/Premium_motorized.png';
 
 const PageContainer = styled(motion.div)`
   min-height: 100vh;
@@ -20,7 +21,7 @@ const Header = styled(motion.div)`
   align-items: center;
   justify-content: center;
   background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-              url(${rollerShadeImage}) center/cover no-repeat;
+              url(${HeroIMG}) center/cover no-repeat;
   padding: 2rem;
   text-align: center;
   color: white;

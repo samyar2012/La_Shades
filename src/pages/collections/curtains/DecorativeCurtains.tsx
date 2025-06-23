@@ -3,7 +3,10 @@ import { ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import curtainsImage from '../../../assets/photo_2025-06-01_20-53-26.jpg';
+import curtainsImage from '../../../assets/03.jpg';
+import floralPatternImage from '../../../assets/15.jpg';
+import geometricDesignImage from '../../../assets/16.jpg';
+import embroideredDetailImage from '../../../assets/17.jpg';
 
 const PageContainer = styled(motion.div)`
   min-height: 100vh;
@@ -306,19 +309,19 @@ const DecorativeCurtains: React.FC = () => {
     {
       name: 'Floral Patterns',
       description: 'Elegant floral designs that bring nature\'s beauty into your home.',
-      image: curtainsImage,
+      image: floralPatternImage,
       link: '/contact'
     },
     {
       name: 'Geometric Designs',
       description: 'Modern geometric patterns for a contemporary look.',
-      image: curtainsImage,
+      image: geometricDesignImage,
       link: '/contact'
     },
     {
       name: 'Embroidered Details',
       description: 'Luxurious curtains with intricate embroidered patterns.',
-      image: curtainsImage,
+      image: embroideredDetailImage,
       link: '/contact'
     }
   ];

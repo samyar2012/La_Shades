@@ -3,9 +3,9 @@ import { ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import singleCell from '../../../assets/kimberley-alpuerto-gYCj5LrI9wI-unsplash.jpg';
-import doubleCell from '../../../assets/moon-i87dB4Kd7nw-unsplash.jpg';
-import tripleCell from '../../../assets/dimas-anggara-VIk1nwibgNE-unsplash.jpg';
+import singleCell from '../../../assets/Classic_Celluar.png';
+import doubleCell from '../../../assets/Modern_celluar.png';
+import tripleCell from '../../../assets/Premium_Celluar.png';
 
 const PageContainer = styled(motion.div)`
   min-height: 100vh;
@@ -260,6 +260,26 @@ const CTALink = styled(motion(Link))`
   }
 `;
 
+const HeroButton = styled(motion(Link))`
+  font-family: 'Montserrat', sans-serif;
+  background-color: transparent;
+  border: 2px solid white;
+  color: white;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-decoration: none;
+  margin-top: 1rem;
+  
+  &:hover {
+    background-color: white;
+    color: black;
+  }
+`;
+
 const CellularShades: React.FC = () => {
   const features = [
     {
@@ -404,14 +424,14 @@ const CellularShades: React.FC = () => {
             Discover the perfect blend of style and energy efficiency with our Cellular Shades. 
             From single to triple cell designs, find the ideal solution for your windows.
           </Description>
-          <RequestQuoteButton
+          <HeroButton
             to="/quote-request?type=shades&model=Cellular Shades"
             variants={descriptionVariants}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
             Request a Quote
-          </RequestQuoteButton>
+          </HeroButton>
         </Container>
       </Header>
 

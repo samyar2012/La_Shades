@@ -3,9 +3,8 @@ import { ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import sheerDraperyImage from '../../../assets/photo_2025-06-01_21-25-59.jpg';
-import modernSheerImage from '../../../assets/photo_2025-06-01_21-26-00.jpg';
-import premiumSheerImage from '../../../assets/photo_2025-06-01_21-26-01.jpg';
+import sheerDraperyImage from '../../../assets/1.jpg';
+import modernSheerImage from '../../../assets/09.jpg';
 
 const PageContainer = styled(motion.div)`
   min-height: 100vh;
@@ -310,11 +309,6 @@ const SheerDrapery: React.FC = () => {
       name: 'Modern Sheer',
       description: 'Experience contemporary style with our Modern Sheer drapery. These sophisticated window treatments offer enhanced light control and visual depth.',
       image: modernSheerImage
-    },
-    {
-      name: 'Premium Sheer',
-      description: 'Discover our Premium Sheer drapery, featuring high-quality materials and superior craftsmanship for the ultimate in style and performance.',
-      image: premiumSheerImage
     }
   ];
 

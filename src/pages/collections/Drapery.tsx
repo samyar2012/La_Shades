@@ -2,11 +2,12 @@ import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import sheerDraperyImage from '../../assets/photo_2025-06-01_21-26-01.jpg';
-import blackoutDraperyImage from '../../assets/photo_2025-06-01_21-26-02.jpg';
-import decorativeDraperyImage from '../../assets/photo_2025-06-01_21-26-02 (2).jpg';
-import motorizedDraperyImage from '../../assets/photo_2025-06-01_20-53-26.jpg';
-import fabricDraperyImage from '../../assets/photo_2025-06-01_21-25-59.jpg';
+import HeroIMG from '../../assets/0026.png';
+import sheerDraperyImage from '../../assets/1.jpg';
+import blackoutDraperyImage from '../../assets/blackout3.jpg';
+import decorativeDraperyImage from '../../assets/03.jpg';
+import motorizedDraperyImage from '../../assets/04.jpg';
+import fabricDraperyImage from '../../assets/05.jpg';
 
 const PageContainer = styled(motion.div)`
   min-height: 100vh;
@@ -21,7 +22,7 @@ const Header = styled(motion.div)`
   align-items: center;
   justify-content: center;
   background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-              url(${sheerDraperyImage}) center/cover no-repeat;
+              url(${HeroIMG}) center/cover no-repeat;
   padding: 2rem;
   text-align: center;
   color: white;
@@ -146,7 +147,7 @@ const ProductImage = styled.img`
 const ProductOverlay = styled.div`
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.2);
   transition: background 0.3s ease;
   display: flex;
   flex-direction: column;

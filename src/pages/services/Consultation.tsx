@@ -3,7 +3,7 @@ import { ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import consultationImage from '../../assets/photo_2025-06-01_20-53-29.jpg';
+import consultationImage from '../../assets/Conslotion.png';
 
 const PageContainer = styled(motion.div)`
   min-height: 100vh;

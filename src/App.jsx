@@ -9,7 +9,6 @@ import Services from './components/Services';
 import Testimonials from './components/Testimonials';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import Home from './pages/Home';
 import './App.css';
 import About from './pages/About';
 import Newsletter from './pages/Newsletter';
@@ -57,6 +56,9 @@ import TermsOfService from './pages/legal/TermsOfService';
 import ShippingPolicy from './pages/legal/ShippingPolicy';
 import ReturnPolicy from './pages/legal/ReturnPolicy';
 import FAQ from './pages/legal/FAQ';
+import Blog from './pages/Blog';
+import Home from './Home';
+import MotorizedProducts from './pages/collections/MotorizedProducts';
 
 function App() {
   useEffect(() => {
@@ -76,12 +78,7 @@ function App() {
         <Routes>
           <Route path="/" element={
             <>
-              <Hero />
-              <Features />
-              <Products />
-              <Services />
-              <Testimonials />
-              <Contact />
+            <Home />
             </>                               
           } />
           <Route path="/about" element={<About />} />
@@ -131,6 +128,8 @@ function App() {
           <Route path="/shipping-policy" element={<ShippingPolicy />} />
           <Route path="/return-policy" element={<ReturnPolicy />} />
           <Route path="/faq" element={<FAQ />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/collections/motorized" element={<MotorizedProducts />} />
 
           <Route path="*" element={<NotFound />} />
         </Routes>

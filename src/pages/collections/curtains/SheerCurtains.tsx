@@ -3,7 +3,10 @@ import { ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import curtainsImage from '../../../assets/photo_2025-06-01_20-53-26.jpg';
+import curtainsImage from '../../../assets/1.jpg';
+import classicSheerImage from '../../../assets/06.jpg';
+import embroideredSheerImage from '../../../assets/07.jpg';
+import texturedSheerImage from '../../../assets/08.jpg';
 
 const PageContainer = styled(motion.div)`
   min-height: 100vh;
@@ -306,19 +309,19 @@ const SheerCurtains: React.FC = () => {
     {
       name: 'Classic Sheer',
       description: 'Timeless sheer curtains with a subtle texture for everyday elegance.',
-      image: curtainsImage,
+      image: classicSheerImage,
       link: '/contact'
     },
     {
       name: 'Embroidered Sheer',
       description: 'Delicate embroidered patterns add a touch of sophistication to your windows.',
-      image: curtainsImage,
+      image: embroideredSheerImage,
       link: '/contact'
     },
     {
       name: 'Textured Sheer',
       description: 'Modern sheer curtains with interesting textures for added visual depth.',
-      image: curtainsImage,
+      image: texturedSheerImage,
       link: '/contact'
     }
   ];

@@ -659,7 +659,7 @@ const QuoteRequest: React.FC = () => {
                   required
                 >
                   <option value="">Select a model</option>
-                  {formData.product_type && PRODUCT_CATEGORIES[formData.product_type as keyof typeof PRODUCT_CATEGORIES].map(model => (
+                  {formData.product_type && PRODUCT_CATEGORIES[formData.product_type as keyof typeof PRODUCT_CATEGORIES]?.map(model => (
                     <option key={model} value={model}>{model}</option>
                   ))}
                 </Select>
@@ -724,7 +724,7 @@ const QuoteRequest: React.FC = () => {
                   disabled={!formData.product_type}
                 >
                   <option value="">Select a material</option>
-                  {formData.product_type && MATERIALS[formData.product_type as keyof typeof MATERIALS].map(material => (
+                  {formData.product_type && MATERIALS[formData.product_type as keyof typeof MATERIALS]?.map(material => (
                     <option key={material} value={material}>{material}</option>
                   ))}
                 </Select>

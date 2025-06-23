@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import styled from 'styled-components';
 import { motion, HTMLMotionProps } from 'framer-motion';
-import customDesign from '../assets/photo_2025-06-01_20-53-29.jpg';
-import installation from '../assets/photo_2025-06-01_20-53-26.jpg';
-import consultation from '../assets/photo_2025-06-01_20-53-17.jpg';
+import customDesign from '../assets/Custom-desgin.png';
+import installation from '../assets/proffesinal-instalation.png';
+import consultation from '../assets/Conslotion.png';
 
 const ServicesSection = styled.section`
   padding: 5rem 2rem;
@@ -19,7 +19,7 @@ const Container = styled(motion.div)`
 
 const SectionHeader = styled(motion.div)`
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 3rem;  
 `;
 
 const SectionTitle = styled(motion.h2)`
@@ -69,7 +69,7 @@ const ServiceCard = styled.div`
   height: 400px;
   overflow: hidden;
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 px 4px rgba(0, 0, 0, 0.07);
   transition: all 0.3s ease;
 `;
 
@@ -85,7 +85,7 @@ const ServiceImage = styled.img`
 const ServiceOverlay = styled.div`
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.4);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -101,6 +101,7 @@ const ServiceTitle = styled(motion.h3)`
   color: white;
   margin-bottom: 1rem;
   text-align: center;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.15);
 `;
 
 const ServiceDescription = styled(motion.p)`
@@ -110,6 +111,7 @@ const ServiceDescription = styled(motion.p)`
   margin-bottom: 1.5rem;
   line-height: 1.6;
   font-weight: 300;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.10);
 `;
 
 const ServiceLink = styled(motion(Link))`

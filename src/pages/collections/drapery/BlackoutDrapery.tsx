@@ -3,9 +3,10 @@ import { ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import blackoutDraperyImage from '../../../assets/photo_2025-06-01_21-25-58.jpg';
-import modernBlackoutImage from '../../../assets/photo_2025-06-01_21-25-57.jpg';
-import premiumBlackoutImage from '../../../assets/photo_2025-06-01_21-25-56.jpg';
+import blackoutDraperyImageHero from '../../../assets/blackout3.jpg';
+import blackoutDraperyImage from '../../../assets/0022.jpg';
+import modernBlackoutImage from '../../../assets/Blackout2.jpg';
+import premiumBlackoutImage from '../../../assets/blackout3.jpg';
 
 const PageContainer = styled(motion.div)`
   min-height: 100vh;
@@ -20,7 +21,7 @@ const Header = styled(motion.div)`
   align-items: center;
   justify-content: center;
   background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-              url(${blackoutDraperyImage}) center/cover no-repeat;
+              url(${blackoutDraperyImageHero}) center/cover no-repeat;
   padding: 2rem;
   text-align: center;
   color: white;

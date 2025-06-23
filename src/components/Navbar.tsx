@@ -252,6 +252,31 @@ const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
 
+  // Close dropdowns when location changes
+  useEffect(() => {
+    setIsProductsOpen(false);
+    setIsMobileProductsOpen(false);
+    setIsMobileMenuOpen(false);
+  }, [location.pathname]);
+
+  // Helper function to handle navigation clicks
+  const handleNavClick = (path: string) => {
+    if (location.pathname === path) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      // Close both desktop and mobile product dropdowns when clicking a non-page link
+      setIsProductsOpen(false);
+      setIsMobileProductsOpen(false);
+    }
+  };
+
+  // Helper function to handle dropdown item clicks
+  const handleDropdownItemClick = () => {
+    setIsProductsOpen(false);
+    setIsMobileProductsOpen(false);
+    setIsMobileMenuOpen(false);
+  };
+
   const handleProductsClick = () => {
     setIsProductsOpen(!isProductsOpen);
   };
@@ -263,12 +288,9 @@ const Navbar = () => {
   const handleMobileMenuClick = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
+  
+  // Rest of the component...
 
-  const handleNavClick = (path: string) => {
-    if (location.pathname === path) {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-  };
 
   return (
     <NavbarContainer>
@@ -285,11 +307,10 @@ const Navbar = () => {
               Products <ChevronDown size={16} />
             </DropdownButton>
             <DropdownMenu isOpen={isProductsOpen}>
-              <DropdownItem to="/collections/blinds">Blinds</DropdownItem>
-              <DropdownItem to="/collections/curtains">Curtains</DropdownItem>
-              <DropdownItem to="/collections/drapery">Drapery</DropdownItem>
-              <DropdownItem to="/collections/shades">Shades</DropdownItem>
-              <DropdownItem to="/collections/accessories">Accessories</DropdownItem>
+              <DropdownItem to="/collections/blinds" onClick={handleDropdownItemClick}>Blinds</DropdownItem>
+              <DropdownItem to="/collections/drapery" onClick={handleDropdownItemClick}>Drapery</DropdownItem>
+              <DropdownItem to="/collections/shades" onClick={handleDropdownItemClick}>Shades</DropdownItem>
+              <DropdownItem to="/collections/accessories" onClick={handleDropdownItemClick}>Accessories</DropdownItem>
             </DropdownMenu>
           </DropdownContainer>
           <NavLink to="/projects" onClick={() => handleNavClick('/projects')}>Gallery</NavLink>
@@ -308,11 +329,11 @@ const Navbar = () => {
           Products <ChevronDown size={16} />
         </MobileDropdownButton>
         <MobileDropdownMenu isOpen={isMobileProductsOpen}>
-          <MobileNavLink to="/collections/blinds">Blinds</MobileNavLink>
-          <MobileNavLink to="/collections/curtains">Curtains</MobileNavLink>
-          <MobileNavLink to="/collections/drapery">Drapery</MobileNavLink>
-          <MobileNavLink to="/collections/shades">Shades</MobileNavLink>
-          <MobileNavLink to="/collections/accessories">Accessories</MobileNavLink>
+          <MobileNavLink to="/collections/blinds" onClick={handleDropdownItemClick}>Blinds</MobileNavLink>
+          <MobileNavLink to="/collections/curtains" onClick={handleDropdownItemClick}>Curtains</MobileNavLink>
+          <MobileNavLink to="/collections/drapery" onClick={handleDropdownItemClick}>Drapery</MobileNavLink>
+          <MobileNavLink to="/collections/shades" onClick={handleDropdownItemClick}>Shades</MobileNavLink>
+          <MobileNavLink to="/collections/accessories" onClick={handleDropdownItemClick}>Accessories</MobileNavLink>
         </MobileDropdownMenu>
         <MobileNavLink to="/projects" onClick={() => handleNavClick('/projects')}>Gallery</MobileNavLink>
         <MobileNavLink to="/contact" onClick={() => handleNavClick('/contact')}>Contact</MobileNavLink>
